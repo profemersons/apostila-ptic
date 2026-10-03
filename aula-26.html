@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Aula 26 | Projetos de TIC</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="bar"></div>
+
+<header class="app-header">
+<div class="hc">
+<a href="index.html" class="brand">
+<span class="logo"><i class="fa-solid fa-arrow-left"></i></span>
+<span class="bt"><span class="tag">Projetos de TIC</span><span class="cn">Voltar às aulas</span></span>
+</a>
+<span class="acts">
+<button id="fm">A−</button>
+<button id="fp">A+</button>
+<button id="tt" title="Alternar tema"></button>
+</span>
+</div>
+</header>
+
+<main class="wrap narrow">
+
+<div class="chips">
+<span class="chip">Aula 26 • 21/08/2026</span>
+<span class="chip">1h40</span>
+<span class="chip">Pensamento Computacional</span>
+</div>
+
+<details id="toc" class="card">
+<summary>Nesta aula</summary>
+<a href="#s0">O que você vai revisar nesta aula</a>
+<a href="#s1">1. Os quatro pilares do pensamento computacional</a>
+<a href="#s2">2. Decomposição</a>
+<a href="#s3">3. Reconhecimento de padrões</a>
+<a href="#s4">4. Abstração</a>
+<a href="#s5">5. Algoritmos</a>
+<a href="#s6">6. Os pilares trabalhando juntos</a>
+<a href="#s7">7. Um problema completo para analisar</a>
+<a href="#s8">8. Do problema ao algoritmo</a>
+<a href="#s9">9. Erros comuns</a>
+<a href="#s10">10. Resumo da aula</a>
+</details>
+
+<article id="conteudo" class="md">
+
+<h1>Aula 26 — Revisão de Pensamento Computacional</h1>
+
+<h2 id="s0">O que você vai revisar nesta aula</h2>
+
+<p>
+Nesta aula vamos reunir os conceitos estudados em <b>Pensamento Computacional</b> e observar
+como eles podem ser utilizados juntos para compreender e resolver problemas.
+</p>
+
+<p>Ao final da revisão, você será capaz de:</p>
+
+<ul>
+<li>reconhecer os quatro pilares do pensamento computacional;</li>
+<li>identificar decomposição em problemas do cotidiano;</li>
+<li>reconhecer padrões e repetições;</li>
+<li>explicar como a abstração seleciona as informações relevantes;</li>
+<li>identificar algoritmos como sequências organizadas de passos;</li>
+<li>combinar os quatro pilares para analisar um problema.</li>
+</ul>
+
+<hr>
+
+<h2 id="s1">1. Os quatro pilares do pensamento computacional</h2>
+
+<p>
+O pensamento computacional pode ser entendido como uma forma estruturada de analisar problemas
+e construir soluções. Quatro ideias aparecem com frequência nesse processo:
+</p>
+
+<div class="tw">
+<table>
+<tr><th>Pilar</th><th>Pergunta que ele ajuda a responder</th></tr>
+<tr><td><b>Decomposição</b></td><td>Como posso dividir este problema em partes menores?</td></tr>
+<tr><td><b>Reconhecimento de padrões</b></td><td>O que se repete ou se parece com algo que já conheço?</td></tr>
+<tr><td><b>Abstração</b></td><td>O que realmente importa para este objetivo?</td></tr>
+<tr><td><b>Algoritmos</b></td><td>Quais passos organizados podem levar à solução?</td></tr>
+</table>
+</div>
+
+<p>
+Esses pilares não são quatro etapas obrigatórias que precisam sempre aparecer na mesma ordem.
+Eles são ferramentas de pensamento que podem se complementar.
+</p>
+
+<hr>
+
+<h2 id="s2">2. Decomposição</h2>
+
+<p>
+<b>Decompor</b> significa dividir um problema grande ou complexo em partes menores.
+Isso facilita a compreensão porque podemos analisar uma parte de cada vez.
+</p>
+
+<p>
+Imagine que uma escola queira criar um sistema para controlar os empréstimos da biblioteca.
+Em vez de tratar tudo como um único problema, podemos separar:
+</p>
+
+<ul>
+<li>cadastro dos livros;</li>
+<li>cadastro dos estudantes;</li>
+<li>registro de empréstimos;</li>
+<li>registro de devoluções;</li>
+<li>controle de atrasos;</li>
+<li>consulta da situação dos livros.</li>
+</ul>
+
+<p>
+O problema continua sendo um só, mas agora está dividido em componentes que podem ser analisados
+individualmente.
+</p>
+
+<blockquote>
+<p>
+<b>Regra prática:</b> se um problema parece grande demais para resolver de uma vez,
+procure partes menores que possam ser compreendidas separadamente.
+</p>
+</blockquote>
+
+<hr>
+
+<h2 id="s3">3. Reconhecimento de padrões</h2>
+
+<p>
+Depois de dividir um problema, podemos observar as partes e procurar <b>semelhanças,
+repetições e comportamentos que aparecem novamente</b>.
+</p>
+
+<p>
+Imagine que uma secretaria observe o número de atendimentos durante vários dias.
+Se o movimento aumenta sempre próximo do mesmo horário, existe um padrão que pode ajudar
+no planejamento da equipe.
+</p>
+
+<p>
+Na programação, reconhecer padrões também é importante. Se várias situações seguem uma
+estrutura parecida, podemos pensar em uma solução que atenda a todas elas.
+</p>
+
+<h3>Exemplo</h3>
+
+<p>
+Considere estas situações:
+</p>
+
+<ul>
+<li>calcular a média de um aluno;</li>
+<li>calcular a média de outro aluno;</li>
+<li>calcular a média de uma terceira pessoa.</li>
+</ul>
+
+<p>
+As pessoas e as notas são diferentes, mas o processo é semelhante:
+<b>receber notas → somar → dividir pela quantidade → apresentar o resultado</b>.
+</p>
+
+<p>
+Esse padrão pode ser transformado em uma solução que funcione para diferentes pessoas.
+</p>
+
+<hr>
+
+<h2 id="s4">4. Abstração</h2>
+
+<p>
+Abstrair é decidir <b>o que é essencial para o objetivo</b> e deixar de lado detalhes que
+não são necessários naquele contexto.
+</p>
+
+<p>
+Imagine que queremos calcular o tempo de uma viagem. Podemos precisar de:
+</p>
+
+<ul>
+<li>distância;</li>
+<li>velocidade;</li>
+<li>tempo.</li>
+</ul>
+
+<p>
+A cor do carro, a música tocando no rádio ou a roupa do motorista não são necessárias
+para esse cálculo.
+</p>
+
+<blockquote>
+<p>
+<b>O que é essencial depende do objetivo.</b> Uma informação pode ser importante em um problema
+e irrelevante em outro.
+</p>
+</blockquote>
+
+<p>
+A abstração ajuda a construir modelos menores e mais fáceis de compreender.
+Mapas, tabelas, formulários, gráficos e interfaces de aplicativos são exemplos de representações
+abstratas da realidade.
+</p>
+
+<hr>
+
+<h2 id="s5">5. Algoritmos</h2>
+
+<p>
+Um <b>algoritmo</b> é uma sequência organizada de instruções para realizar uma tarefa ou resolver
+um problema.
+</p>
+
+<p>
+Quando usamos os pilares anteriores, conseguimos chegar a uma solução mais organizada.
+Por exemplo, para calcular a média de duas notas:
+</p>
+
+<ol>
+<li>receber a primeira nota;</li>
+<li>receber a segunda nota;</li>
+<li>somar as duas notas;</li>
+<li>dividir o resultado por 2;</li>
+<li>mostrar a média.</li>
+</ol>
+
+<p>
+Em pseudocódigo:
+</p>
+
+<pre><code>algoritmo "media"
+var
+   n1, n2, media: real
+inicio
+   leia(n1)
+   leia(n2)
+   media &lt;- (n1 + n2) / 2
+   escreva(media)
+fimalgoritmo</code></pre>
+
+<p>
+O algoritmo transforma uma ideia de solução em passos que podem ser seguidos, testados e,
+posteriormente, implementados em uma linguagem de programação.
+</p>
+
+<hr>
+
+<h2 id="s6">6. Os pilares trabalhando juntos</h2>
+
+<p>
+Agora podemos juntar os quatro conceitos em uma situação.
+</p>
+
+<h3>Problema: organizar a entrega de trabalhos</h3>
+
+<p>
+Uma escola precisa acompanhar quais estudantes entregaram cada atividade.
+</p>
+
+<p><b>1. Decomposição:</b></p>
+
+<ul>
+<li>estudantes;</li>
+<li>disciplinas;</li>
+<li>atividades;</li>
+<li>prazos;</li>
+<li>entregas;</li>
+<li>pendências.</li>
+</ul>
+
+<p><b>2. Reconhecimento de padrões:</b></p>
+
+<p>
+Todas as disciplinas possuem atividades, estudantes e prazos. A estrutura se repete,
+mesmo quando os conteúdos são diferentes.
+</p>
+
+<p><b>3. Abstração:</b></p>
+
+<p>
+Para controlar a entrega, precisamos de dados como estudante, disciplina, atividade,
+prazo e situação da entrega. Informações como cor favorita ou música preferida não são
+necessárias para esse objetivo.
+</p>
+
+<p><b>4. Algoritmo:</b></p>
+
+<ol>
+<li>identificar o estudante;</li>
+<li>selecionar a disciplina;</li>
+<li>selecionar a atividade;</li>
+<li>verificar o prazo;</li>
+<li>registrar a entrega;</li>
+<li>atualizar a situação.</li>
+</ol>
+
+<p>
+Observe que não começamos escrevendo código. Primeiro entendemos o problema.
+</p>
+
+<hr>
+
+<h2 id="s7">7. Um problema completo para analisar</h2>
+
+<p>
+Imagine agora um aplicativo de cantina escolar que permita ao estudante reservar um lanche
+antes do intervalo.
+</p>
+
+<h3>Decomposição</h3>
+
+<p>
+Podemos dividir o problema em cadastro, cardápio, pedidos, pagamento, preparação e retirada.
+</p>
+
+<h3>Reconhecimento de padrões</h3>
+
+<p>
+Percebemos que vários pedidos possuem uma estrutura semelhante:
+estudante, item escolhido, quantidade, horário e situação.
+</p>
+
+<h3>Abstração</h3>
+
+<p>
+Para controlar o pedido, algumas informações são essenciais. A cor do cabelo do estudante,
+por exemplo, não é necessária para preparar o lanche.
+</p>
+
+<h3>Algoritmo</h3>
+
+<ol>
+<li>identificar o estudante;</li>
+<li>mostrar os itens disponíveis;</li>
+<li>receber a escolha;</li>
+<li>verificar disponibilidade;</li>
+<li>registrar o pedido;</li>
+<li>informar o horário de retirada.</li>
+</ol>
+
+<blockquote>
+<p>
+Os quatro pilares ajudaram a transformar uma situação do cotidiano em uma solução que pode
+ser organizada e posteriormente implementada em um sistema.
+</p>
+</blockquote>
+
+<hr>
+
+<h2 id="s8">8. Do problema ao algoritmo</h2>
+
+<p>
+Podemos representar o caminho de forma simplificada:
+</p>
+
+<div class="fl">
+<div class="fn">Situação real<small>O problema existe no mundo</small></div>
+<div class="fa">↓</div>
+<div class="fn">Decomposição<small>Dividir em partes menores</small></div>
+<div class="fa">↓</div>
+<div class="fn">Padrões<small>Encontrar repetições e semelhanças</small></div>
+<div class="fa">↓</div>
+<div class="fn">Abstração<small>Selecionar o que é relevante</small></div>
+<div class="fa">↓</div>
+<div class="fn g">Algoritmo<small>Organizar os passos da solução</small></div>
+</div>
+
+<p class="cap">Os pilares podem se combinar para transformar uma situação real em uma solução organizada.</p>
+
+<p>
+Depois disso, a solução pode ser implementada em um programa. A programação, portanto,
+é uma forma de colocar a solução em prática.
+</p>
+
+<hr>
+
+<h2 id="s9">9. Erros comuns</h2>
+
+<h3>Tentar resolver tudo de uma vez</h3>
+
+<p>
+Problemas grandes ficam mais fáceis quando são divididos em partes menores.
+</p>
+
+<h3>Ignorar padrões</h3>
+
+<p>
+Se situações semelhantes aparecem repetidamente, podemos procurar uma estratégia que funcione
+para todas elas.
+</p>
+
+<h3>Guardar informação demais</h3>
+
+<p>
+A abstração ajuda a evitar modelos cheios de dados que não serão utilizados.
+</p>
+
+<h3>Guardar informação de menos</h3>
+
+<p>
+O contrário também é um problema. Se retirarmos uma informação essencial, a solução pode
+deixar de funcionar.
+</p>
+
+<h3>Começar pelo código</h3>
+
+<p>
+Antes de programar, precisamos compreender o problema e organizar uma solução.
+</p>
+
+<hr>
+
+<h2 id="s10">10. Resumo da aula</h2>
+
+<ul>
+<li><b>Decomposição</b> divide um problema grande em partes menores.</li>
+<li><b>Reconhecimento de padrões</b> procura repetições e semelhanças.</li>
+<li><b>Abstração</b> seleciona o que é essencial para determinado objetivo.</li>
+<li><b>Algoritmos</b> organizam uma solução em passos.</li>
+<li>Os quatro pilares podem trabalhar juntos.</li>
+<li>O pensamento computacional pode ser utilizado antes mesmo de escrever código.</li>
+<li>Uma boa solução começa pela compreensão do problema.</li>
+</ul>
+
+<blockquote>
+<p>
+<b>Ideia-chave:</b> pensar computacionalmente é aprender a olhar para um problema,
+organizá-lo e construir uma solução que possa ser compreendida, testada e executada.
+</p>
+</blockquote>
+
+<h3>Glossário</h3>
+
+<ul>
+<li><b>Decomposição:</b> divisão de um problema em partes menores.</li>
+<li><b>Padrão:</b> repetição ou semelhança identificável.</li>
+<li><b>Abstração:</b> seleção do que é relevante para determinado objetivo.</li>
+<li><b>Algoritmo:</b> sequência organizada de instruções.</li>
+<li><b>Pensamento computacional:</b> abordagem estruturada para analisar problemas e construir soluções.</li>
+</ul>
+
+<h3>Referências para aprofundamento</h3>
+
+<ul>
+<li>WING, Jeannette M. <i>Computational Thinking</i>. Communications of the ACM, 2006.</li>
+<li>BRASIL. Ministério da Educação. <i>Base Nacional Comum Curricular (BNCC)</i>. Brasília: MEC, 2018.</li>
+<li>SOCIEDADE BRASILEIRA DE COMPUTAÇÃO. <i>Diretrizes para ensino de Computação na Educação Básica</i>.</li>
+<li>CIEB. <i>Currículo de Referência em Tecnologia e Computação</i>. São Paulo: CIEB, 2018.</li>
+<li>BRACKMANN, Christian Puhlmann. <i>Desenvolvimento do pensamento computacional através de atividades desplugadas na educação básica</i>. UFRGS, 2017.</li>
+</ul>
+
+</article>
+
+<section class="card">
+<h2><i class="fa-solid fa-circle-question"></i> Atividade 1 — Quiz</h2>
+<div id="quiz"></div>
+</section>
+
+<section class="card">
+<h2><i class="fa-solid fa-puzzle-piece"></i> Atividade 2 — Aplicando os quatro pilares</h2>
+<div id="ativ"></div>
+</section>
+
+</main>
+
+<script>
+var TIT='Aula 26 · Revisão de Pensamento Computacional',ARQ='aula-26';
+
+var QUIZ=[
+{
+q:'Uma escola quer criar um sistema para controlar empréstimos da biblioteca. Dividir o problema em cadastro, empréstimos, devoluções e atrasos é um exemplo de:',
+o:[
+'Decomposição.',
+'Abstração.',
+'Reconhecimento de padrões.',
+'Saída de dados.'
+],
+a:0,
+e:'Dividir um problema grande em partes menores é decomposição.'
+},
+{
+q:'Uma secretaria percebe que o maior movimento acontece sempre próximo do mesmo horário. Identificar essa repetição é um exemplo de:',
+o:[
+'Algoritmo.',
+'Reconhecimento de padrões.',
+'Abstração.',
+'Variável.'
+],
+a:1,
+e:'Observar repetições e semelhanças caracteriza o reconhecimento de padrões.'
+},
+{
+q:'Para calcular o tempo de uma viagem, usamos distância e velocidade, mas não precisamos saber a cor do carro. Isso representa:',
+o:[
+'Decomposição.',
+'Reconhecimento de padrões.',
+'Abstração.',
+'Repetição.'
+],
+a:2,
+e:'A abstração seleciona as informações relevantes para o objetivo.'
+},
+{
+q:'Qual alternativa representa um algoritmo?',
+o:[
+'Uma ideia geral de que uma tarefa precisa ser realizada.',
+'Uma lista organizada de passos para realizar uma tarefa.',
+'Uma coleção de imagens sem ordem.',
+'Uma descrição contendo todos os detalhes possíveis da realidade.'
+],
+a:1,
+e:'Um algoritmo organiza uma solução em passos que podem ser seguidos.'
+},
+{
+q:'Qual situação utiliza melhor os quatro pilares do pensamento computacional?',
+o:[
+'Dividir o problema, identificar padrões, selecionar informações relevantes e organizar os passos da solução.',
+'Começar escrevendo código sem analisar o problema.',
+'Guardar todas as informações possíveis antes de definir o objetivo.',
+'Usar apenas algoritmos e ignorar os outros conceitos.'
+],
+a:0,
+e:'Os quatro pilares podem se complementar na análise e solução de problemas.'
+}
+];
+
+var ATIV={
+"ta":"Parte A — Identifique o pilar",
+"ia":"Associe cada situação ao pilar de pensamento computacional mais diretamente relacionado.",
+"la":["Decomposição","Reconhecimento de padrões","Abstração","Algoritmo"],
+"a":[
+["Dividir um aplicativo em cadastro, pedidos e pagamentos.",0],
+["Perceber que vários pedidos possuem os mesmos campos.",1],
+["Ignorar a cor do carro ao calcular o tempo de uma viagem.",2],
+["Organizar os passos para calcular uma média.",3],
+["Separar uma tarefa grande em várias tarefas menores.",0],
+["Perceber que um problema se repete em várias turmas.",1]
+],
+"tb":"Parte B — Ordene o raciocínio",
+"ib":"Organize a sequência para transformar um problema em uma solução.",
+"b":[
+"Identificar e compreender o problema",
+"Dividir o problema em partes menores",
+"Procurar padrões e informações relevantes",
+"Organizar os passos da solução"
+],
+"tc":"Parte C — Escolha o melhor exemplo",
+"c":{
+"q":"Uma escola quer evitar conflitos na reserva de salas. Qual conjunto de informações é mais adequado para representar cada reserva?",
+"o":[
+"Nome do aluno e cor da sala",
+"Aluno, sala, data, horário e situação da reserva",
+"Aluno, sala, cor favorita, altura e música preferida",
+"Somente o nome do aluno"
+],
+"r":1
+},
+"td":"Parte D — Reflexão",
+"d":{
+"q":"Por que não devemos começar a programar imediatamente quando recebemos um problema?",
+"o":[
+"Porque primeiro precisamos compreender o problema e organizar uma solução.",
+"Porque programação não resolve problemas reais.",
+"Porque algoritmos não podem ser implementados.",
+"Porque todo problema deve ser resolvido sem computador."
+],
+"r":0
+}
+};
+</script>
+
+<script src="app.js"></script>
+</body>
+</html>

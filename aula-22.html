@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Aula 22 | Projetos de TIC</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="bar"></div>
+<header class="app-header"><div class="hc">
+<a href="index.html" class="brand"><span class="logo"><i class="fa-solid fa-arrow-left"></i></span><span class="bt"><span class="tag">Projetos de TIC</span><span class="cn">Voltar às aulas</span></span></a>
+<span class="acts"><button id="fm">A−</button><button id="fp">A+</button><button id="tt" title="Alternar tema"></button></span></div></header>
+<main class="wrap narrow">
+<div class="chips"><span class="chip">Aula 22 • 17/08/2026</span><span class="chip">1h40</span><span class="chip">Lógica de Programação</span></div>
+<details id="toc" class="card"><summary>Nesta aula</summary><a href="#s0">O que você vai aprender nesta aula</a><a href="#s1">1. Algoritmos estão em toda parte</a><a href="#s2">2. O que é um algoritmo</a><a href="#s3">3. Do mundo para o computador: dados, variáveis e constantes</a><a href="#s4">4. Pseudocódigo: escrevendo algoritmos</a><a href="#s5">5. Entrada e saída de dados</a><a href="#s6">6. Operadores aritméticos</a><a href="#s7">7. Estrutura sequencial</a><a href="#s8">8. Algoritmos no dia a dia</a><a href="#s9">9. Erros comuns</a><a href="#s10">10. Resumo da aula</a></details>
+<article id="conteudo" class="md">
+<h1>Aula 22 — Algoritmos – Parte 1</h1>
+<h2 id="s0">O que você vai aprender nesta aula</h2>
+<p>Ao final desta aula, você será capaz de:</p>
+<ul><li>explicar o que é um algoritmo e quais características ele precisa ter;</li><li>diferenciar descrição narrativa, fluxograma e pseudocódigo;</li><li>usar variáveis, constantes e tipos de dados para guardar informações;</li><li>escrever algoritmos simples em pseudocódigo, com entrada e saída de dados;</li><li>aplicar operadores aritméticos e executar um algoritmo sequencial no papel (teste de mesa).</li></ul>
+<hr>
+<h2 id="s1">1. Algoritmos estão em toda parte</h2>
+<p>Quando você segue uma receita, usa o caixa eletrônico, monta um móvel pelo manual ou digita o destino no aplicativo de mapas, está seguindo (ou usando) um <b>algoritmo</b>. A palavra vem do nome do matemático persa Al-Khwarizmi, que viveu entre os séculos VIII e IX e escreveu sobre métodos de cálculo passo a passo.</p>
+<p>Exemplos fora da tecnologia: trocar o pneu de um carro, lavar roupa à mão, a sequência de uma rotina de exercícios, as regras de um jogo de cartas. Exemplos na tecnologia: o cálculo da rota mais rápida, a busca de um contato na agenda, o desbloqueio do celular, o cálculo do total de uma compra online.</p>
+<blockquote><p><b>Ideia central:</b> um algoritmo é a forma organizada de dizer <i>como</i> resolver um problema, em passos tão claros que qualquer pessoa (ou máquina) consiga executar.</p></blockquote>
+<h2 id="s2">2. O que é um algoritmo</h2>
+<p>Na Aula 20 você aprendeu a abstrair e, na Aula 21, a representar modelos. O algoritmo é o pilar que fecha o ciclo: depois de saber o que importa, definimos <b>a sequência de passos</b> que resolve o problema.</p>
+<blockquote><p><b>Algoritmo</b> é uma sequência finita e ordenada de instruções claras que, partindo de dados de entrada, produz um resultado esperado.</p></blockquote>
+<p>Para valer como algoritmo, o conjunto de instruções precisa ter estas características:</p>
+<div class="tw"><table><tr><th>Característica</th><th>O que significa</th><th>Exemplo de falha</th></tr><tr><td>Finito</td><td>Termina depois de um número limitado de passos</td><td>"Misture até o fim dos tempos"</td></tr><tr><td>Preciso</td><td>Cada instrução tem um único sentido</td><td>"Coloque um pouco de sal"</td></tr><tr><td>Ordenado</td><td>A ordem dos passos importa</td><td>Ligar o forno depois de assar o bolo</td></tr><tr><td>Entrada e saída</td><td>Recebe dados (pode ser zero ou mais) e entrega um resultado</td><td>Calcular a média e não mostrar o valor</td></tr><tr><td>Executável</td><td>Cada passo pode realmente ser feito por quem executa</td><td>"Calcule o valor exato de π"</td></tr></table></div>
+<p><b>Exemplo narrativo: sacar dinheiro no caixa eletrônico.</b></p>
+<ol><li>Inserir o cartão.</li><li>Digitar a senha.</li><li>Escolher a opção "Saque".</li><li>Digitar o valor desejado.</li><li>Retirar o dinheiro e o cartão.</li></ol>
+<h3>Três formas de escrever um algoritmo</h3>
+<div class="tw"><table><tr><th>Forma</th><th>Como é</th><th>Vantagem</th></tr><tr><td>Descrição narrativa</td><td>Texto em linguagem do dia a dia, em passos</td><td>Fácil de escrever e entender</td></tr><tr><td>Fluxograma</td><td>Desenho com símbolos e setas</td><td>Mostra caminhos e decisões de forma visual</td></tr><tr><td>Pseudocódigo</td><td>Texto com regras parecidas com as de uma linguagem de programação</td><td>Fica próximo do código final</td></tr></table></div>
+<p>Neste material vamos usar principalmente o <b>fluxograma</b> (que você já conhece) e o <b>pseudocódigo</b>.</p>
+<h2 id="s3">3. Do mundo para o computador: dados, variáveis e constantes</h2>
+<p>Um algoritmo manipula <b>dados</b>: nomes, números, respostas de sim ou não. O computador precisa de um lugar para guardar cada dado enquanto trabalha com ele.</p>
+<h3>3.1 Variável</h3>
+<p>Imagine uma caixinha etiquetada. A etiqueta é o <b>nome</b> da variável; o que está dentro é o <b>valor</b>; e o formato da caixa define o <b>tipo</b> de coisa que cabe ali. O valor pode mudar ao longo do algoritmo, e por isso se chama variável.</p>
+<div class="fl"><div class="fb"><div class="fn ">idade<small>inteiro · 17</small></div><div class="fn ">nome<small>texto · "Ana"</small></div><div class="fn ">aprovado<small>lógico · verdadeiro</small></div></div></div><p class="cap">Variáveis como caixinhas: nome, tipo e valor.</p>
+<p>Para colocar um valor em uma variável, usamos a <b>atribuição</b>, representada por uma seta: <code>idade ← 17</code> (lê-se "idade recebe 17").</p>
+<h3>3.2 Constante</h3>
+<p>É um valor que <b>não muda</b> durante o algoritmo: a taxa de um imposto, o valor de π, o número de dias de uma semana. Por exemplo: <code>TAXA ← 0,12</code>. Dar nome à constante deixa o algoritmo mais claro e, se o valor mudar no futuro, é preciso ajustar em um só lugar.</p>
+<h3>3.3 Tipos de dados</h3>
+<div class="tw"><table><tr><th>Tipo</th><th>Guarda</th><th>Exemplos</th></tr><tr><td>Inteiro</td><td>Números sem parte decimal</td><td>17, 0, −3</td></tr><tr><td>Real</td><td>Números com parte decimal</td><td>12,50 — 1,72 — 7,5</td></tr><tr><td>Texto (ou caractere)</td><td>Letras, palavras e símbolos</td><td>"Ana", "1°C", "Rua das Flores"</td></tr><tr><td>Lógico</td><td>Apenas verdadeiro ou falso</td><td>verdadeiro, falso</td></tr></table></div>
+<p><b>Cuidado com um erro comum:</b> nem todo número deve ser guardado como número. Um telefone, um CEP ou um código como "007" não serão somados nem multiplicados, e o zero à esquerda é importante. Por isso, ficam melhor como <b>texto</b>.</p>
+<h3>3.4 Dando nomes às variáveis</h3>
+<div class="tw"><table><tr><th>Evite</th><th>Prefira</th><th>Por quê</th></tr><tr><td>x, a1</td><td>nota1, precoUnitario</td><td>O nome deve explicar o que a variável guarda</td></tr><tr><td>total do mes</td><td>totalMes</td><td>Sem espaços</td></tr><tr><td>média</td><td>media</td><td>Sem acentos nem símbolos</td></tr><tr><td>1nota</td><td>nota1</td><td>Deve começar por letra</td></tr></table></div>
+<h2 id="s4">4. Pseudocódigo: escrevendo algoritmos</h2>
+<p>O <b>pseudocódigo</b> é uma forma de escrever algoritmos em português, seguindo uma estrutura parecida com a de uma linguagem de programação, mas sem se preocupar com regras rígidas de sintaxe. Existem variações (como o Portugol, usado em ferramentas como VisuAlg e Portugol Studio). O importante é a clareza.</p>
+<p>Estrutura básica que usaremos:</p>
+<pre class="code"><code>algoritmo "NomeDoAlgoritmo"
+var
+   // aqui declaramos as variáveis
+inicio
+   // aqui ficam as instruções
+fimalgoritmo</code></pre>
+<ul><li><code>algoritmo</code> dá nome ao programa.</li><li><code>var</code> é a área de <b>declaração</b>: dizemos o nome e o tipo de cada variável.</li><li><code>inicio</code> e <code>fimalgoritmo</code> delimitam as instruções.</li><li>Linhas que começam com <code>//</code> são <b>comentários</b>, anotações que o computador ignora.</li></ul>
+<p>Nas ferramentas de teste, a atribuição costuma ser digitada como <code>&lt;-</code>. Neste material, escrevemos <code>←</code> para facilitar a leitura.</p>
+<h2 id="s5">5. Entrada e saída de dados</h2>
+<p>Um algoritmo conversa com o mundo por dois comandos:</p>
+<ul><li><code>leia(variável)</code>: <b>entrada</b>, recebe um dado e o guarda na variável;</li><li><code>escreva(...)</code>: <b>saída</b>, mostra uma mensagem ou um valor.</li></ul>
+<p>No fluxograma, os dois são representados pelo símbolo de entrada/saída (<span class="sy io"></span>), que você viu na Aula 21.</p>
+<pre class="code"><code>algoritmo "Saudacao"
+var
+   nome: texto
+inicio
+   escreva("Qual é o seu nome? ")
+   leia(nome)
+   escreva("Olá, ", nome, "!")
+fimalgoritmo</code></pre>
+<p>Se a pessoa digitar "Ana", o algoritmo mostra: <code>Olá, Ana!</code></p>
+<h2 id="s6">6. Operadores aritméticos</h2>
+<p>Operadores são os símbolos que realizam operações.</p>
+<div class="tw"><table><tr><th>Operação</th><th>Símbolo</th><th>Exemplo</th><th>Resultado</th></tr><tr><td>Soma</td><td>+</td><td>7 + 2</td><td>9</td></tr><tr><td>Subtração</td><td>−</td><td>7 − 2</td><td>5</td></tr><tr><td>Multiplicação</td><td>*</td><td>7 * 2</td><td>14</td></tr><tr><td>Divisão</td><td>/</td><td>7 / 2</td><td>3,5</td></tr><tr><td>Divisão inteira</td><td>div</td><td>7 div 2</td><td>3</td></tr><tr><td>Resto da divisão</td><td>mod</td><td>7 mod 2</td><td>1</td></tr><tr><td>Potência</td><td>^</td><td>3 ^ 2</td><td>9</td></tr></table></div>
+<p>Os operadores <code>div</code> e <code>mod</code> são muito úteis: o <code>mod</code> descobre, por exemplo, se um número é par (<code>n mod 2</code> dá 0).</p>
+<p><b>Ordem de execução (precedência):</b> primeiro o que está entre parênteses, depois potência, depois multiplicação e divisão, por fim soma e subtração. Veja como os parênteses mudam o resultado ao calcular a média de 7 e 9:</p>
+<div class="tw"><table><tr><th>Expressão</th><th>Resultado</th><th>Correto?</th></tr><tr><td>(7 + 9) / 2</td><td>8</td><td>Sim, é a média</td></tr><tr><td>7 + 9 / 2</td><td>11,5</td><td>Não: a divisão foi feita antes</td></tr></table></div>
+<h2 id="s7">7. Estrutura sequencial</h2>
+<p>Na <b>estrutura sequencial</b>, as instruções são executadas uma após a outra, de cima para baixo, sem desvios e sem repetições. É a base de todo algoritmo. Veja o cálculo da média de duas notas, em pseudocódigo e em fluxograma:</p>
+<pre class="code"><code>algoritmo "MediaDeNotas"
+var
+   nota1, nota2, media: real
+inicio
+   escreva("Digite a primeira nota: ")
+   leia(nota1)
+   escreva("Digite a segunda nota: ")
+   leia(nota2)
+   media ← (nota1 + nota2) / 2
+   escreva("A média é: ", media)
+fimalgoritmo</code></pre>
+<div class="fl"><div class="fn t">Início</div><div class="fa">↓</div><div class="fn ">Ler nota1<small>entrada</small></div><div class="fa">↓</div><div class="fn ">Ler nota2<small>entrada</small></div><div class="fa">↓</div><div class="fn ">media ← (nota1 + nota2) / 2<small>processo</small></div><div class="fa">↓</div><div class="fn ">Mostrar media<small>saída</small></div><div class="fa">↓</div><div class="fn t">Fim</div></div><p class="cap">Fluxograma: cálculo da média de duas notas (estrutura sequencial).</p>
+<h3>Teste de mesa: executando o algoritmo no papel</h3>
+<p>O <b>teste de mesa</b> consiste em acompanhar, linha a linha, o valor de cada variável. É a melhor forma de descobrir erros antes de usar o computador. Com as notas 7 e 9:</p>
+<div class="tw"><table><tr><th>Passo</th><th>Instrução</th><th>nota1</th><th>nota2</th><th>media</th></tr><tr><td>1</td><td>leia(nota1)</td><td>7</td><td></td><td></td></tr><tr><td>2</td><td>leia(nota2)</td><td>7</td><td>9</td><td></td></tr><tr><td>3</td><td>media ← (nota1 + nota2) / 2</td><td>7</td><td>9</td><td>8</td></tr><tr><td>4</td><td>escreva(media)</td><td>7</td><td>9</td><td>8</td></tr></table></div>
+<h3>Um problema clássico: trocar o valor de duas variáveis</h3>
+<p>Suponha <code>a = 5</code> e <code>b = 8</code>, e queremos que <code>a</code> passe a valer 8 e <code>b</code> passe a valer 5. Uma ideia ingênua seria <code>a ← b</code> e depois <code>b ← a</code>. Veja o que acontece:</p>
+<div class="tw"><table><tr><th>Passo</th><th>Instrução</th><th>a</th><th>b</th></tr><tr><td>Início</td><td></td><td>5</td><td>8</td></tr><tr><td>1</td><td>a ← b</td><td>8</td><td>8</td></tr><tr><td>2</td><td>b ← a</td><td>8</td><td>8</td></tr></table></div>
+<p>O valor original de <code>a</code> foi perdido no passo 1. É como trocar o suco de dois copos: você precisa de um <b>terceiro copo</b>. Em algoritmos, esse terceiro copo é uma variável auxiliar:</p>
+<pre class="code"><code>aux ← a
+a ← b
+b ← aux</code></pre>
+<p>Fazendo o teste de mesa: <code>aux = 5</code>, depois <code>a = 8</code> e, por fim, <code>b = 5</code>. A troca funcionou.</p>
+<h2 id="s8">8. Algoritmos no dia a dia</h2>
+<p><b>Converter graus Celsius em Fahrenheit.</b> Entrada: a temperatura em Celsius. Processamento: <code>f ← c * 9 / 5 + 32</code>. Saída: a temperatura em Fahrenheit. Com 20 °C, o resultado é 68 °F.</p>
+<p><b>Preço com desconto.</b> Entrada: o preço e o percentual de desconto. Processamento: <code>valorFinal ← preco - preco * desconto / 100</code>. Saída: o valor final. Com preço 80 e desconto 15, o resultado é 68.</p>
+<p><b>Troco de uma compra.</b> Entradas: valor da compra e valor pago. Processamento: <code>troco ← pago - compra</code>. Saída: o troco.</p>
+<p>Repare que os três seguem o mesmo padrão: <b>entrada, processamento e saída</b>. Reconhecer esse padrão é o pilar do reconhecimento de padrões ajudando a criar algoritmos.</p>
+<h2 id="s9">9. Erros comuns</h2>
+<div class="tw"><table><tr><th>Erro</th><th>Exemplo</th><th>Como corrigir</th></tr><tr><td>Usar variável sem valor</td><td>Calcular <code>total ← preco * qtd</code> antes de ler <code>qtd</code></td><td>Leia ou atribua o valor antes de usar</td></tr><tr><td>Tipo inadequado</td><td>Guardar telefone como inteiro</td><td>Use texto para dados que não são calculados</td></tr><tr><td>Esquecer a precedência</td><td><code>7 + 9 / 2</code> no lugar de <code>(7 + 9) / 2</code></td><td>Use parênteses</td></tr><tr><td>Instrução ambígua</td><td>"Coloque um pouco de sal"</td><td>Seja específico: "Coloque 5 g de sal"</td></tr><tr><td>Faltar entrada ou saída</td><td>Calcular a média e não mostrar</td><td>Todo algoritmo precisa entregar um resultado</td></tr><tr><td>Nome sem significado</td><td><code>x ← a * b</code></td><td>Use nomes como <code>area ← base * altura</code></td></tr><tr><td>Perder valor ao trocar</td><td><code>a ← b; b ← a</code></td><td>Use uma variável auxiliar</td></tr></table></div>
+<h2 id="s10">10. Resumo da aula</h2>
+<ul><li><b>Algoritmo</b> é uma sequência finita, ordenada e precisa de instruções, com entrada e saída.</li><li>Pode ser escrito como descrição narrativa, <b>fluxograma</b> ou <b>pseudocódigo</b>.</li><li><b>Variáveis</b> guardam valores que mudam; <b>constantes</b>, valores fixos; cada dado tem um <b>tipo</b>: inteiro, real, texto ou lógico.</li><li>Os comandos básicos são <code>leia</code> (entrada), <code>escreva</code> (saída) e a atribuição <code>←</code>.</li><li>Os <b>operadores aritméticos</b> seguem uma ordem de execução, e os parênteses a controlam.</li><li>Na <b>estrutura sequencial</b>, as instruções rodam em ordem, e o <b>teste de mesa</b> ajuda a conferir o resultado.</li></ul>
+<h3>Glossário</h3>
+<ul><li><b>Algoritmo:</b> sequência finita e precisa de passos para resolver um problema.</li><li><b>Pseudocódigo:</b> forma de escrever algoritmos próxima de uma linguagem de programação.</li><li><b>Variável:</b> espaço nomeado para guardar um valor que pode mudar.</li><li><b>Constante:</b> valor que não muda durante o algoritmo.</li><li><b>Atribuição:</b> ato de colocar um valor em uma variável (←).</li><li><b>Teste de mesa:</b> simulação manual da execução de um algoritmo.</li><li><b>Variável auxiliar:</b> variável usada para guardar um valor temporariamente.</li></ul>
+<h3>Referências</h3>
+<p><b>Referências brasileiras</b></p>
+<ul><li>BRASIL. Ministério da Educação. <i>Base Nacional Comum Curricular (BNCC)</i>. Brasília: MEC, 2018.</li><li>SOCIEDADE BRASILEIRA DE COMPUTAÇÃO (SBC). <i>Diretrizes para ensino de Computação na Educação Básica</i>. Porto Alegre: SBC, 2019.</li><li>CENTRO DE INOVAÇÃO PARA A EDUCAÇÃO BRASILEIRA (CIEB). <i>Currículo de Referência em Tecnologia e Computação</i>. São Paulo: CIEB, 2018.</li><li>FORBELLONE, André Luiz Villar; EBERSPÄCHER, Henri Frederico. <i>Lógica de programação: a construção de algoritmos e estruturas de dados</i>. São Paulo: Pearson Prentice Hall.</li><li>MANZANO, José Augusto N. G.; OLIVEIRA, Jayr Figueiredo de. <i>Algoritmos: lógica para desenvolvimento de programação de computadores</i>. São Paulo: Érica.</li><li>ASCENCIO, Ana Fernanda Gomes; CAMPOS, Edilene Aparecida Veneruchi de. <i>Fundamentos da programação de computadores: algoritmos, Pascal, C/C++ e Java</i>. São Paulo: Pearson Prentice Hall.</li><li>RAABE, André; ZORZO, Avelino F.; BLIKSTEIN, Paulo (orgs.). <i>Computação na Educação Básica: fundamentos e experiências</i>. Porto Alegre: Penso, 2020.</li></ul>
+<p><b>Referência internacional</b></p>
+<ul><li>WING, Jeannette M. <i>Computational thinking</i>. Communications of the ACM, v. 49, n. 3, p. 33–35, 2006.</li></ul>
+</article>
+<section class="card"><h2><i class="fa-solid fa-circle-question"></i> Atividade 1 — Quiz</h2><div id="quiz"></div></section>
+<section class="card"><h2><i class="fa-solid fa-puzzle-piece"></i> Atividade 2 — Praticando algoritmos</h2><div id="ativ"></div></section>
+</main>
+<script>
+var TIT='Aula 22 · Algoritmos – Parte 1',ARQ='aula-22';
+var QUIZ=[{"q": "Um colega diz que \"ser aprovado no semestre\" é um algoritmo. O que melhor explica por que isso não se qualifica como algoritmo?", "o": ["Porque algoritmos só existem em computadores.", "Porque é um objetivo, não uma sequência finita de passos claros e executáveis que levem ao resultado.", "Porque algoritmos não podem ter resultado final.", "Porque o objetivo é muito curto para ser um algoritmo."], "a": 1, "e": "Um algoritmo descreve como chegar ao resultado, em passos precisos, ordenados e finitos. Um objetivo diz apenas aonde se quer chegar."}, {"q": "Um programa calcula o preço final de vários produtos com um imposto fixo de 12%. Qual é a melhor modelagem dos dados?", "o": ["O imposto como constante e o preço de cada produto como variável.", "Tanto o imposto quanto o preço como constantes.", "O imposto como variável e o preço como constante.", "Os dois como texto, para evitar erros de cálculo."], "a": 0, "e": "O imposto não muda durante o cálculo (constante), enquanto o preço muda a cada produto (variável). Texto não permite fazer contas."}, {"q": "Um algoritmo precisa guardar o telefone do aluno, como 11 98888-7777. Qual tipo de dado é mais adequado e por quê?", "o": ["Inteiro, pois telefone é formado por números.", "Real, pois pode haver parte decimal.", "Lógico, pois o telefone existe ou não existe.", "Texto, pois o telefone não será usado em cálculos e contém símbolos e zeros que precisam ser preservados."], "a": 3, "e": "O tipo depende do uso do dado. Telefone é identificador, não quantidade, e não deve ser somado ou multiplicado."}, {"q": "Com a = 5 e b = 8, um aluno escreve: \"a ← b\" e depois \"b ← a\". Ao final, qual é o resultado e o que ele esqueceu?", "o": ["a = 5 e b = 8; nada mudou e não há erro.", "a = 8 e b = 5; a troca deu certo.", "a = 8 e b = 8; o valor original de a foi perdido, e faltou uma variável auxiliar.", "a = 5 e b = 5; faltou apenas uma instrução de saída."], "a": 2, "e": "No primeiro passo, a recebe 8 e o valor 5 deixa de existir. É preciso guardar 5 em uma variável auxiliar antes."}, {"q": "Uma equipe quer explicar um algoritmo para pessoas que não programam e, ao mesmo tempo, deixá-lo próximo do que será programado depois. Qual combinação é mais adequada?", "o": ["Apenas um texto narrativo longo.", "Um fluxograma, para a visão geral, junto com o pseudocódigo, que se aproxima do código.", "Somente o código final em uma linguagem de programação.", "Somente uma tabela de dados."], "a": 1, "e": "O fluxograma é visual e acessível; o pseudocódigo tem a estrutura que facilita a transição para o código. Juntos, atendem aos dois públicos."}];
+var ATIV={"ta": "Parte A — Qual é o tipo de dado?", "ia": "Escolha o tipo mais adequado para guardar cada informação.", "la": ["Inteiro", "Real", "Texto", "Lógico"], "a": [["Idade de um aluno (17)", 0], ["Preço de um lanche (12,50)", 1], ["Nome de um aluno (\"Ana\")", 2], ["Aprovado? (verdadeiro ou falso)", 3], ["Telefone (11 98888-7777)", 2], ["Média das notas (7,5)", 1], ["Quantidade de alunos da turma (38)", 0], ["Está chovendo? (sim ou não)", 3]], "tb": "Parte B — Ordene o algoritmo", "ib": "Ordene os passos do algoritmo que calcula a média de duas notas. Use as setas.", "b": ["Ler a primeira nota", "Ler a segunda nota", "Calcular a média: (nota1 + nota2) / 2", "Mostrar a média"], "tc": "Parte C — Qual é a saída?", "c": {"q": "Considere: a ← 4; b ← 3; a ← a + b; b ← a * 2; escreva(b). O que será mostrado?", "o": ["7", "14", "21"], "r": 1}, "td": "Parte D — Clareza", "d": {"q": "Qual instrução NÃO é adequada em um algoritmo?", "o": ["Aqueça 200 ml de água por 2 minutos", "Coloque um pouco de sal e misture até ficar bom", "Leia o valor do preço"], "r": 1}};
+</script>
+<script src="app.js"></script>
+</body>
+</html>

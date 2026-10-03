@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Aula 20 | Projetos de TIC</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="bar"></div>
+<header class="app-header"><div class="hc">
+<a href="index.html" class="brand"><span class="logo"><i class="fa-solid fa-arrow-left"></i></span><span class="bt"><span class="tag">Projetos de TIC</span><span class="cn">Voltar às aulas</span></span></a>
+<span class="acts"><button id="fm">A−</button><button id="fp">A+</button><button id="tt" title="Alternar tema"></button></span></div></header>
+<main class="wrap narrow">
+<div class="chips"><span class="chip">Aula 20 • 03/08/2026</span><span class="chip">1h40</span><span class="chip">Pensamento Computacional</span></div>
+<details id="toc" class="card"><summary>Nesta aula</summary><a href="#s0">O que você vai aprender nesta aula</a><a href="#s1">1. Ponto de partida: o mapa que "mente" (e ajuda)</a><a href="#s2">2. O que é abstração</a><a href="#s3">3. Os dois movimentos da abstração</a><a href="#s4">4. A abstração depende do objetivo</a><a href="#s5">5. Abstração no dia a dia (além da tecnologia)</a><a href="#s6">6. Abstração em tecnologia</a><a href="#s7">7. Como abstrair: um passo a passo</a><a href="#s8">8. Os riscos da abstração</a><a href="#s9">9. Mais três casos para analisar</a><a href="#s10">10. Resumo da aula</a></details>
+<article id="conteudo" class="md">
+<h1>Aula 20 — Abstração de Problemas – Parte 1</h1>
+<h2 id="s0">O que você vai aprender nesta aula</h2>
+<p>Ao final desta aula, você será capaz de:</p>
+<ul><li>explicar o que é abstração e por que ela é indispensável na resolução de problemas complexos;</li><li>diferenciar o que é <b>essencial</b> do que é <b>irrelevante</b> em um problema, de acordo com o objetivo;</li><li>reconhecer a abstração em situações do dia a dia (mapas, receitas, cardápios, aplicativos);</li><li>aplicar um passo a passo simples para abstrair um problema;</li><li>perceber os riscos de abstrair demais ou de menos.</li></ul>
+<hr>
+<h2 id="s1">1. Ponto de partida: o mapa que "mente" (e ajuda)</h2>
+<p>Imagine que você acabou de chegar a uma cidade grande e precisa usar o metrô. Você abre o mapa das linhas. Nele, as linhas são retas ou fazem curvas suaves, as estações ficam quase igualmente espaçadas e as cores indicam cada linha.</p>
+<p>Agora pense: <b>será que a cidade é realmente assim?</b> Não. As ruas reais são tortas, as distâncias entre estações variam muito e o trajeto dos trens faz curvas que o mapa não mostra. Mesmo assim, o mapa funciona muito bem para a pergunta que você tem: <i>"em que estação eu embarco, onde faço baldeação e em qual eu desço?"</i></p>
+<p>Esse tipo de mapa tem uma história famosa. Em 1931, o desenhista Harry Beck propôs um mapa do metrô de Londres que abandonava a geografia real e mostrava só a lógica da rede: linhas, estações e conexões. A ideia foi tão eficiente que influenciou os mapas de metrô de várias cidades do mundo, inclusive de cidades brasileiras.</p>
+<p>O que Beck fez foi <b>abstração</b>: ele ignorou deliberadamente detalhes reais (curvas exatas, distâncias, ruas) para destacar apenas o que importava para quem usa o metrô.</p>
+<blockquote><p><b>Ideia central da aula:</b> abstrair é decidir, com um objetivo claro, o que manter e o que deixar de lado para lidar melhor com um problema.</p></blockquote>
+<hr>
+<h2 id="s2">2. O que é abstração</h2>
+<h3>2.1 A origem da palavra</h3>
+<p>A palavra <i>abstrair</i> vem do latim <i>abstrahere</i>, que significa "retirar", "separar", "puxar para fora". Quando abstraímos, <b>retiramos</b> de uma situação os detalhes que não servem ao nosso propósito e ficamos com o que importa.</p>
+<p>Você já faz isso o tempo todo:</p>
+<ul><li>Ao dizer "vou pegar o ônibus das 7h", você não descreve a cor do ônibus, o nome do motorista ou o modelo do veículo. Só o horário e a linha importam.</li><li>Ao descrever um colega a alguém, você escolhe algumas características úteis (altura, cor da camisa, onde está sentado) e ignora milhares de outras.</li></ul>
+<h3>2.2 Definição</h3>
+<blockquote><p><b>Abstração</b> é o processo de identificar as informações essenciais de um problema ou objeto, filtrar os detalhes que não são relevantes para o objetivo e construir uma representação simplificada (um <b>modelo</b>) que permita analisar e resolver o problema com mais clareza.</p></blockquote>
+<p>Três palavras-chave nessa definição:</p>
+<ol><li><b>Essencial:</b> o que é indispensável para resolver aquele problema.</li><li><b>Irrelevante:</b> o que existe na realidade, mas não ajuda (ou atrapalha) naquele problema.</li><li><b>Modelo:</b> a versão simplificada que construímos, como um mapa, um desenho, um esquema ou uma lista de dados.</li></ol>
+<h3>2.3 Onde a abstração entra no pensamento computacional</h3>
+<p>O pensamento computacional se apoia em quatro pilares que trabalham juntos:</p>
+<div class="tw"><table><tr><th>Pilar</th><th>Pergunta que ele responde</th></tr><tr><td><b>Decomposição</b></td><td>Como posso dividir este problema grande em partes menores?</td></tr><tr><td><b>Reconhecimento de padrões</b></td><td>O que se repete ou se parece com algo que já resolvi?</td></tr><tr><td><b>Abstração</b></td><td>O que realmente importa aqui e o que posso ignorar?</td></tr><tr><td><b>Algoritmos</b></td><td>Qual é a sequência de passos para resolver?</td></tr></table></div>
+<p>A abstração costuma aparecer <b>antes e durante</b> a criação do algoritmo: primeiro decidimos quais informações importam, depois escrevemos os passos que usam essas informações. Sem abstração, o algoritmo ficaria cheio de detalhes inúteis; com abstração, ele fica claro e enxuto.</p>
+<hr>
+<h2 id="s3">3. Os dois movimentos da abstração</h2>
+<p>Na prática, abstrair envolve dois movimentos complementares.</p>
+<h3>3.1 Filtrar: eliminar o que não importa</h3>
+<p>Aqui perguntamos: <b>"Se eu ignorar esta informação, o problema continua resolvível?"</b> Se a resposta for sim, a informação é irrelevante para aquele objetivo.</p>
+<div class="fl"><div class="fn ">Uma informação do problema</div><div class="fa">↓</div><div class="fn dec">Se eu ignorar isso, o problema continua resolvível?</div><div class="fb"><div class="fn r">Sim<small>é irrelevante: filtrar</small></div><div class="fn g">Não<small>é essencial: manter no modelo</small></div></div></div><p class="cap">Fluxograma: como decidir o que filtrar.</p>
+<p><b>Exemplo — receita de bolo.</b> Quem escreve uma receita informa os ingredientes, as quantidades, a temperatura do forno e o tempo de preparo. Não informa a marca da batedeira, a cor da tigela ou a história da família que criou a receita. Esses detalhes existem, mas não mudam o resultado.</p>
+<h3>3.2 Generalizar: enxergar o que várias situações têm em comum</h3>
+<p>Aqui perguntamos: <b>"O que estes casos diferentes têm em comum?"</b> Ao ignorar as diferenças, criamos uma categoria ou um modelo que serve para vários casos.</p>
+<p><b>Exemplo — a palavra "cadeira".</b> Existem cadeiras de escritório, de bar, de praia, de rodas, de madeira, de plástico. Quando dizemos "cadeira", abstraímos o que é comum a todas: um objeto com assento, feito para uma pessoa se sentar. Ignoramos cor, material e tamanho.</p>
+<p><b>Exemplo — formulário de cadastro.</b> Todo aluno da escola é diferente, mas o sistema da secretaria trata cada um como um conjunto de campos iguais: nome, matrícula, turma, data de nascimento. A abstração transforma pessoas reais, com histórias complexas, em um modelo de dados que o sistema consegue organizar.</p>
+<blockquote><p><b>Resumindo:</b> filtrar tira o excesso; generalizar enxerga o que é comum. Juntos, produzem um modelo útil.</p></blockquote>
+<hr>
+<h2 id="s4">4. A abstração depende do objetivo</h2>
+<p>Este é o ponto mais importante e o que mais gera erros: <b>não existe uma abstração "correta" em si. O que é essencial depende do problema que você quer resolver.</b></p>
+<p>Veja o mesmo objeto, uma <b>escola</b>, sendo abstraído para três objetivos diferentes:</p>
+<div class="tw"><table><tr><th>Objetivo</th><th>O que é essencial</th><th>O que pode ser ignorado</th></tr><tr><td>Um aluno novo descobrir como chegar lá</td><td>Endereço, linhas de ônibus, horário de abertura</td><td>Número de professores, cor das paredes, orçamento</td></tr><tr><td>A secretaria controlar as matrículas</td><td>Nome do aluno, turma, documentos, situação da matrícula</td><td>Trajeto até a escola, cardápio da cantina</td></tr><tr><td>A direção planejar a limpeza</td><td>Número de salas, área em m², horários de uso</td><td>Notas dos alunos, nomes dos professores</td></tr></table></div>
+<p>A escola é a mesma. Os modelos são diferentes porque os objetivos são diferentes. Por isso, <b>antes de abstrair, sempre pergunte: "para que eu quero resolver este problema?"</b></p>
+<h3>Outro exemplo: uma pessoa</h3>
+<ul><li>Para um <b>plano de saúde</b>, importam idade, histórico médico e região de residência.</li><li>Para uma <b>loja de roupas online</b>, importam medidas, estilo preferido e endereço de entrega.</li><li>Para uma <b>plataforma de streaming</b>, importam os filmes assistidos e o horário em que a pessoa costuma assistir.</li></ul>
+<p>Mesma pessoa, três modelos distintos.</p>
+<hr>
+<h2 id="s5">5. Abstração no dia a dia (além da tecnologia)</h2>
+<p>A abstração está presente em tudo o que simplifica a vida. Veja exemplos de áreas variadas:</p>
+<p><b>Cozinha — a receita.</b> Resume um processo complexo em ingredientes e passos. Uma pessoa que nunca viu o prato consegue reproduzi-lo sem conhecer a história dele.</p>
+<p><b>Geografia — o mapa e a escala.</b> Um mapa do Brasil mostra estados e capitais, mas não mostra cada rua. Um mapa de bairro mostra ruas, mas não o relevo. Cada mapa abstrai de um jeito para servir a um uso.</p>
+<p><b>Transporte — a tabela de horários de ônibus.</b> Resume um sistema complexo (trânsito, motoristas, veículos) em poucas informações: linha, ponto de parada, horário.</p>
+<p><b>Finanças — o extrato bancário.</b> Em vez de contar a história de cada compra, mostra data, descrição resumida e valor. Quem analisa seus gastos usa esse modelo.</p>
+<p><b>Saúde — a bula do remédio e o prontuário.</b> O prontuário resume o paciente a dados clínicos relevantes para o tratamento, deixando de lado detalhes pessoais que não ajudam no diagnóstico.</p>
+<p><b>Esporte — a súmula de um jogo.</b> Registra placar, gols, cartões e substituições. Não registra cada passe, cada olhar ou cada gesto, mas é suficiente para saber o que aconteceu de importante.</p>
+<p><b>Arquitetura — a planta baixa.</b> Mostra paredes, portas e medidas, mas não a cor da tinta nem os móveis. Serve para quem vai construir.</p>
+<p><b>Comunicação — o currículo.</b> Resume anos de vida em formação, experiência e habilidades. Um bom currículo é aquele em que a pessoa escolheu o que mostrar para a vaga em questão.</p>
+<p><b>Educação — o boletim.</b> Reduz meses de aprendizagem a notas e frequência. É útil, mas também mostra os limites da abstração: uma nota não conta tudo sobre o que um aluno sabe.</p>
+<p><b>Previsão do tempo.</b> Reduz a atmosfera, um sistema enorme e caótico, a poucas informações: temperatura, chance de chuva e vento.</p>
+<hr>
+<h2 id="s6">6. Abstração em tecnologia</h2>
+<p>Na computação, a abstração é uma das ideias mais usadas. Veja onde ela aparece:</p>
+<p><b>Variáveis.</b> Quando um programa guarda <code>idade = 17</code>, ele não se importa com a vida da pessoa, só com o número. A variável é uma abstração de um dado.</p>
+<p><b>Funções.</b> Quando você usa uma função como "calcular a média", não precisa saber como os cálculos são feitos por dentro. Você usa a função pelo que ela faz, não pelo como. Isso é abstração de processo.</p>
+<p><b>Objetos e classes (programação orientada a objetos).</b> Um programa de biblioteca pode ter um modelo "Livro" com título, autor e situação (disponível ou emprestado). Não precisa registrar o cheiro do papel nem a cor da capa.</p>
+<p><b>Interface do celular.</b> O ícone de uma lixeira representa "apagar". Você não precisa saber como o sistema remove os dados da memória. A interface abstrai a complexidade.</p>
+<p><b>Pastas e arquivos.</b> O sistema operacional mostra uma estrutura de pastas para você organizar seus documentos. Na realidade, os dados ficam espalhados em blocos de memória no disco. A estrutura de pastas é uma abstração criada para facilitar o uso.</p>
+<p><b>Armazenamento em nuvem.</b> Você salva uma foto e acessa de qualquer lugar sem saber em que servidor, em que cidade ou em que equipamento ela está. A "nuvem" é uma abstração poderosa.</p>
+<p><b>Aplicativo de transporte por app.</b> A tela mostra um carro se movendo em um mapa simplificado. Por trás, há sistemas de localização, pagamento, cálculo de preço e pareamento entre motorista e passageiro. O usuário vê apenas o essencial.</p>
+<p><b>Níveis de abstração.</b> Na tecnologia, a abstração geralmente acontece em <b>camadas</b>. Quando você pede comida por um aplicativo:</p>
+<ol><li><b>Nível do usuário:</b> escolher o prato e pagar.</li><li><b>Nível do aplicativo:</b> enviar o pedido ao restaurante e acompanhar a entrega.</li><li><b>Nível da programação:</b> funções que calculam o preço e registram o pedido.</li><li><b>Nível do equipamento:</b> sinais elétricos em processadores e redes.</li></ol>
+<p>Cada camada esconde os detalhes da camada de baixo. Isso permite que cada pessoa trabalhe no seu nível sem precisar dominar todos os outros.</p>
+<div class="fl"><div class="fn ">Nível do usuário<small>escolher o prato e pagar</small></div><div class="fa">↓</div><div class="fn ">Nível do aplicativo<small>enviar o pedido e acompanhar a entrega</small></div><div class="fa">↓</div><div class="fn ">Nível da programação<small>funções que calculam o preço e registram o pedido</small></div><div class="fa">↓</div><div class="fn ">Nível do equipamento<small>sinais elétricos em processadores e redes</small></div></div><p class="cap">Camadas de abstração: cada nível esconde os detalhes do nível abaixo.</p>
+<hr>
+<h2 id="s7">7. Como abstrair: um passo a passo</h2>
+<p>Para abstrair um problema, siga estas cinco perguntas.</p>
+<ol><li><b>Qual é o objetivo?</b> O que eu quero resolver ou decidir?</li><li><b>Quem vai usar o resultado?</b> Quem precisa entender o modelo e para quê?</li><li><b>Que informações são necessárias?</b> Sem quais dados eu não consigo atingir o objetivo?</li><li><b>O que posso ignorar?</b> Quais detalhes existem, mas não mudam a solução?</li><li><b>Como vou representar?</b> Em uma lista, uma tabela, um desenho, um esquema ou um fluxograma?</li></ol>
+<div class="fl"><div class="fn ">1. Objetivo<small>O que quero resolver?</small></div><div class="fa">↓</div><div class="fn ">2. Usuário<small>Quem vai usar o resultado?</small></div><div class="fa">↓</div><div class="fn ">3. Informações necessárias<small>Sem quais dados não resolvo?</small></div><div class="fa">↓</div><div class="fn ">4. O que ignorar<small>O que existe, mas não muda a solução?</small></div><div class="fa">↓</div><div class="fn ">5. Representação<small>Lista, tabela, desenho ou fluxograma</small></div><div class="fa">↓</div><div class="fn dec">Teste: falta ou sobra algo?</div><div class="fb"><div class="fn r">Falta algo<small>abstraiu demais: volte ao passo 3</small></div><div class="fn r">Sobra algo<small>abstraiu de menos: volte ao passo 4</small></div></div><div class="fa">↓</div><div class="fn g">Modelo pronto<small>Tudo certo</small></div></div><p class="cap">Fluxograma: passo a passo para abstrair um problema.</p>
+<h3>Exemplo resolvido: aplicativo da cantina da escola</h3>
+<p><b>Problema:</b> a cantina da escola quer um aplicativo para os alunos reservarem lanches no intervalo e evitarem filas.</p>
+<ol><li><b>Objetivo:</b> permitir que o aluno reserve um lanche e retire no intervalo, sem enfrentar fila.</li><li><b>Quem vai usar:</b> alunos (para reservar) e funcionários da cantina (para preparar).</li><li><b>Informações necessárias:</b> nome do aluno, turma, item escolhido, horário de retirada, forma de pagamento, disponibilidade do item.</li><li><b>O que ignorar:</b> cor do cabelo do aluno, notas, trajeto até a cantina, marca do forno usado na cantina.</li><li><b>Representação:</b> uma tabela de pedidos com colunas <i>aluno, turma, item, horário de retirada, status</i>.</li></ol>
+<p>Veja que o modelo final é bem menor que a realidade, e é justamente isso que o torna útil.</p>
+<h3>Teste de verificação</h3>
+<p>Depois de construir um modelo, faça duas perguntas:</p>
+<ul><li><b>Falta alguma coisa?</b> Se eu tentar resolver o problema só com esse modelo, vou me deparar com uma informação que não tenho?</li><li><b>Sobra alguma coisa?</b> Existe algum dado no modelo que ninguém vai usar?</li></ul>
+<p>Se faltar, o modelo está abstraído <b>demais</b>. Se sobrar, está abstraído <b>de menos</b>.</p>
+<hr>
+<h2 id="s8">8. Os riscos da abstração</h2>
+<h3>8.1 Abstrair demais ou de menos</h3>
+<ul><li><b>De menos:</b> o modelo fica tão detalhado que se torna difícil de usar. Imagine um mapa de metrô que mostra cada prédio, cada árvore e cada poste: ninguém conseguiria ler.</li><li><b>Demais:</b> o modelo fica tão simples que perde informação importante. Imagine um mapa de metrô que só diz "a cidade tem metrô": inútil para viajar.</li></ul>
+<p>O bom modelo está no meio: contém o necessário para o objetivo, nem mais, nem menos.</p>
+<h3>8.2 Confundir o modelo com a realidade</h3>
+<p>Há uma frase muito citada, do pensador Alfred Korzybski: <i>"o mapa não é o território"</i>. Ela lembra que todo modelo é uma versão reduzida da realidade e, por isso, pode falhar.</p>
+<p><b>Exemplos de problemas causados por esse esquecimento:</b></p>
+<ul><li>Um aluno é reduzido a uma média, mas a média não revela se ele estava passando por uma dificuldade naquele bimestre.</li><li>Um mapa mostra uma rota "rápida", mas não informa que o caminho passa por uma rua alagada.</li></ul>
+<h3>8.3 Quem decide o que é essencial também faz escolhas</h3>
+<p>Ao decidir o que ignorar, estamos fazendo uma escolha, e escolhas podem excluir pessoas ou situações. Um exemplo: se um aplicativo de entregas é desenhado pensando só em usuários que enxergam bem e têm internet rápida, ele pode ficar difícil de usar para pessoas com deficiência visual ou em regiões com conexão instável. Os "detalhes" ignorados eram, na verdade, necessidades reais de pessoas reais.</p>
+<p>Por isso, bons profissionais de tecnologia sempre perguntam: <b>"Quem eu estou deixando de fora quando simplifico dessa forma?"</b></p>
+<hr>
+<h2 id="s9">9. Mais três casos para analisar</h2>
+<h3>Caso 1 — Biblioteca da escola</h3>
+<p><b>Problema:</b> a biblioteca quer controlar empréstimos de livros.</p>
+<ul><li><b>Essencial:</b> título, autor, código do livro, nome do aluno, data do empréstimo, data prevista de devolução, situação (disponível/emprestado).</li><li><b>Irrelevante:</b> número de páginas, cor da capa, editora, preço de compra (a não ser que a biblioteca queira controlar patrimônio, o que mudaria o objetivo).</li><li><b>Representação:</b> tabela de empréstimos.</li></ul>
+<h3>Caso 2 — Entrega de encomendas</h3>
+<p><b>Problema:</b> uma loja precisa planejar a rota de um entregador que atende 8 endereços.</p>
+<ul><li><b>Essencial:</b> os endereços, as distâncias ou tempos de deslocamento entre eles, o horário de funcionamento de cada destino.</li><li><b>Irrelevante:</b> a marca da moto, a cor das casas, o nome dos moradores (para o cálculo da rota).</li><li><b>Representação:</b> um grafo simplificado, com pontos (endereços) ligados por linhas (trajetos), e o tempo em cada linha.</li></ul>
+<h3>Caso 3 — Jogo de celular</h3>
+<p><b>Problema:</b> criar um jogo simples em que um personagem coleta moedas.</p>
+<ul><li><b>Essencial:</b> posição do personagem, posição das moedas, pontuação, regras de colisão.</li><li><b>Irrelevante (para a lógica do jogo):</b> aparência detalhada do cenário, trilha sonora, nome do personagem.</li><li><b>Observação:</b> a aparência é irrelevante <i>para a lógica</i>, mas é essencial para a experiência do jogador. Isso mostra, de novo, que a abstração depende do objetivo: o programador de lógica e o designer visual abstraem a mesma coisa de formas diferentes.</li></ul>
+<hr>
+<h2 id="s10">10. Resumo da aula</h2>
+<ul><li><b>Abstrair</b> é focar no essencial e ignorar o irrelevante, com base em um objetivo.</li><li>A abstração tem dois movimentos: <b>filtrar</b> (eliminar o excesso) e <b>generalizar</b> (enxergar o que é comum).</li><li>O resultado da abstração é um <b>modelo</b>: um mapa, uma tabela, um esquema, um conjunto de dados.</li><li><b>O que é essencial depende do objetivo.</b> O mesmo objeto pode gerar modelos diferentes.</li><li>Passo a passo: objetivo → usuário → informações necessárias → o que ignorar → representação.</li><li>Riscos: abstrair demais, abstrair de menos, confundir o modelo com a realidade e deixar pessoas de fora sem perceber.</li><li>Na tecnologia, a abstração aparece em variáveis, funções, objetos, interfaces e na organização em camadas.</li></ul>
+<h3>Glossário</h3>
+<ul><li><b>Abstração:</b> processo de destacar o essencial e filtrar o irrelevante.</li><li><b>Modelo:</b> representação simplificada de um problema ou objeto.</li><li><b>Generalização:</b> identificação do que há em comum entre casos diferentes.</li><li><b>Camada de abstração:</b> nível em que os detalhes de níveis inferiores ficam ocultos.</li><li><b>Dado:</b> informação registrada que pode ser usada por um programa.</li><li><b>Interface:</b> parte visível de um sistema com a qual o usuário interage.</li></ul>
+<h3>Referências para aprofundamento</h3>
+<p><b>Referências brasileiras</b></p>
+<ul><li>BRASIL. Ministério da Educação. <i>Base Nacional Comum Curricular (BNCC)</i>. Brasília: MEC, 2018.</li><li>BRASIL. Conselho Nacional de Educação. <i>Computação na Educação Básica: complemento à BNCC</i> (Parecer CNE/CEB nº 2/2022).</li><li>SOCIEDADE BRASILEIRA DE COMPUTAÇÃO (SBC). <i>Diretrizes para ensino de Computação na Educação Básica</i>. Porto Alegre: SBC, 2019.</li><li>CENTRO DE INOVAÇÃO PARA A EDUCAÇÃO BRASILEIRA (CIEB). <i>Currículo de Referência em Tecnologia e Computação</i>. São Paulo: CIEB, 2018.</li><li>BRACKMANN, Christian Puhlmann. <i>Desenvolvimento do pensamento computacional através de atividades desplugadas na educação básica.</i> Tese de doutorado, Universidade Federal do Rio Grande do Sul (UFRGS), 2017.</li><li>RAABE, André; ZORZO, Avelino F.; BLIKSTEIN, Paulo (orgs.). <i>Computação na Educação Básica: fundamentos e experiências</i>. Porto Alegre: Penso, 2020.</li></ul>
+<p><b>Referências internacionais</b></p>
+<ul><li>WING, Jeannette M. <i>Computational thinking</i>. Communications of the ACM, v. 49, n. 3, p. 33–35, 2006.</li><li>KRAMER, Jeff. <i>Is abstraction the key to computing?</i> Communications of the ACM, v. 50, n. 4, p. 36–42, 2007.</li></ul>
+</article>
+<section class="card"><h2><i class="fa-solid fa-circle-question"></i> Atividade 1 — Quiz</h2><div id="quiz"></div></section>
+<section class="card"><h2><i class="fa-solid fa-puzzle-piece"></i> Atividade 2 — Abstraindo o problema</h2><div id="ativ"></div></section>
+</main>
+<script>
+var TIT='Aula 20 · Abstração – Parte 1',ARQ='aula-20';
+var QUIZ=[
+{q:'Uma empresa de ônibus quer um mapa para os passageiros saberem onde descer. Um funcionário propõe desenhar todas as ruas, prédios e árvores; outro, só as linhas, paradas e conexões. Qual análise é mais adequada?',o:['A primeira, pois quanto mais detalhes, mais útil o modelo.','A segunda, pois, para esse objetivo, os demais detalhes são irrelevantes e atrapalham a leitura.','As duas são iguais, pois a abstração não depende do objetivo.','Nenhuma é abstração, pois mapas mostram o território exato.'],a:1,e:'O objetivo define o que é essencial. Detalhes demais tornam o modelo difícil de usar.'},
+{q:'Um aluno afirma: "Existe uma única forma correta de abstrair uma escola." Qual argumento contradiz melhor essa ideia?',o:['Escolas são complexas demais para serem modeladas.','O essencial para a secretaria (nome, turma, situação) não é o mesmo que para a direção planejar a limpeza (salas, área, horários).','Todos os modelos de escola são iguais, pois todas têm alunos.','A abstração só funciona em programação.'],a:1,e:'O essencial depende do objetivo: o mesmo objeto gera modelos diferentes.'},
+{q:'Um app de reserva de salas guarda apenas "nome do aluno" e "sala". Dois alunos reservam a mesma sala no mesmo horário. O que explica melhor o problema?',o:['O modelo foi abstraído demais: faltou uma informação essencial, o horário.','O modelo foi abstraído de menos, pois tem poucos campos.','O problema foi causado pelos alunos, não pelo modelo.','O modelo está correto: quanto menos informação, melhor.'],a:0,e:'Faltou um dado essencial para atingir o objetivo (evitar conflitos). Isso é abstração excessiva.'},
+{q:'Ao salvar uma foto na nuvem, você não sabe em qual servidor ela ficará. Pensando em camadas de abstração, qual afirmação é mais correta?',o:['O usuário não precisa conhecer os níveis inferiores, pois a interface esconde essa complexidade.','O serviço só funciona porque o usuário conhece os servidores.','Se o usuário não sabe onde a foto está, não há abstração.','A abstração em camadas elimina a existência dos servidores.'],a:0,e:'Cada camada oculta os detalhes da inferior. Os servidores continuam existindo, só ficam escondidos.'},
+{q:'Um app de entregas foi desenhado só para quem tem boa visão e internet rápida. Depois do lançamento, muitos usuários tiveram dificuldade. Qual reflexão é mais pertinente?',o:['A abstração é neutra, então o problema foi apenas técnico.','Ao decidir o que ignorar, a equipe fez escolhas que deixaram necessidades reais de fora: é preciso perguntar quem pode ser excluído do modelo.','Aplicativos não devem ser simplificados, pois toda simplificação exclui pessoas.','Os usuários não leram o manual.'],a:1,e:'Abstrair envolve escolhas sobre o que é relevante, e elas podem excluir pessoas.'}];
+var ATIV={"ta": "Parte A — Essencial ou irrelevante?", "ia": "Objetivo: controlar o empréstimo de livros da escola.", "la": ["Essencial", "Irrelevante"], "a": [["Título do livro", 0], ["Cor da capa", 1], ["Nome do aluno que pegou o livro", 0], ["Data prevista de devolução", 0], ["Time de futebol do aluno", 1], ["Código de identificação do exemplar", 0], ["Número de páginas", 1], ["Situação do livro (disponível ou emprestado)", 0], ["Cor do cabelo da bibliotecária", 1], ["Turma do aluno", 0]], "tb": "Parte B — Ordene as etapas", "ib": "Do mais próximo do usuário ao mais interno do sistema. Use as setas.", "b": ["O aluno toca em \"Reservar livro\" na tela", "O aplicativo verifica se o livro está disponível", "O sistema registra a reserva no banco de dados", "O equipamento grava os dados na memória do servidor"], "tc": "Parte C — Escolha o melhor modelo", "c": {"q": "Qual cadastro de empréstimo é o mais adequado?", "o": ["aluno, livro", "aluno, turma, código do livro, título, data do empréstimo, data prevista de devolução, situação", "aluno, turma, código, título, autor, editora, preço, cor da capa, páginas, time do aluno, cor dos olhos, datas, situação"], "r": 1}, "td": "Parte D — Reflexão", "d": {"q": "Quem poderia ficar de fora se o app fosse pensado só para quem tem internet o tempo todo no celular?", "o": ["Alunos sem acesso constante à internet", "Ninguém, pois todos têm acesso", "Apenas a bibliotecária"], "r": 0}};
+</script>
+<script src="app.js"></script>
+</body>
+</html>

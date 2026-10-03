@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Projetos de TIC | ETEC Taboão da Serra</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header class="app-header">
+        <div class="hc">
+            <a href="index.html" class="brand"><span class="logo"><i class="fa-solid fa-laptop-code"></i></span><span
+                    class="bt"><span class="tag">ETEC de Taboão da Serra</span><span class="cn">Projetos de
+                        TIC</span></span></a>
+            <button id="tt" title="Alternar tema"></button>
+        </div>
+    </header>
+    <main class="wrap">
+        <section class="hero"><span class="stag">ETEC DE TABOÃO DA SERRA</span>
+            <h1>Projetos de Tecnologia de Informação e Comunicação</h1>
+            <p>Apostila online desenvolvida com exclusividade para o 1°C. Leia, responda o quiz, faça a atividade e
+                envie as imagens pelo Teams.</p>
+        </section>
+        <div class="bar2">
+            <h2><i class="fa-solid fa-list-check"></i> Cronograma de aulas</h2>
+            <select id="ord" aria-label="Ordenar">
+                <option value="r">Mais recentes primeiro</option>
+                <option value="a">Mais antigas primeiro</option>
+            </select>
+        </div>
+        <div id="lista" class="grid"></div>
+    </main>
+    <script src="app.js"></script>
+    <script>
+        // Para liberar uma aula: troque open:false por open:true (e crie o arquivo da aula).
+        const AULAS = [
+
+            {
+                n: 20,
+                d: "03/08/2026",
+                t: "Abstração de Problemas – Parte 1",
+                m: "Pensamento Computacional",
+                u: "aula-20.html",
+                open: true
+            },
+
+            {
+                n: 21,
+                d: "10/08/2026",
+                t: "Abstração de Problemas – Parte 2",
+                m: "Pensamento Computacional",
+                u: "aula-21.html",
+                open: true
+            },
+
+            {
+                n: 22,
+                d: "17/08/2026",
+                t: "Algoritmos – Parte 1",
+                m: "Lógica de Programação",
+                u: "aula-22.html",
+                open: true
+            },
+
+            {
+                n: 23,
+                d: "24/08/2026",
+                t: "Algoritmos – Parte 2",
+                m: "Lógica de Programação",
+                u: "aula-23.html",
+                open: true
+            },
+
+            {
+                n: 24,
+                d: "31/08/2026",
+                t: "Algoritmos – Parte 3",
+                m: "Lógica de Programação",
+                u: "aula-24.html",
+                open: true
+            },
+
+            {
+                n: 25,
+                d: "14/08/2026",
+                t: "Plantão de Dúvidas",
+                m: "Aula Síncrona",
+                u: "aula-25.html",
+                open: true
+            },
+
+            {
+                n: 26,
+                d: "21/08/2026",
+                t: "Revisão de Pensamento Computacional",
+                m: "Pensamento Computacional",
+                u: "aula-26.html",
+                open: true
+            },
+
+            {
+                n: 27,
+                d: "28/08/2026",
+                t: "ComputComp Arcade: O Desafio dos Pilares",
+                m: "Pensamento Computacional",
+                u: "aula-27.html",
+                open: true
+            }
+
+        ];
+        function desenha() {
+            var rec = document.getElementById('ord').value == 'r';
+            document.getElementById('lista').innerHTML = AULAS.slice().sort(function (a, b) { return rec ? b.n - a.n : a.n - b.n }).map(function (a) {
+                var i = '<div class="top2"><span class="chip">Aula ' + a.n + ' • ' + a.d + '</span><span class="badge ' + (a.open ? 'on' : 'off') + '">' + (a.open ? 'Disponível' : 'Em breve') + '</span></div><h3>' + a.t + '</h3><p>' + a.m + '</p>';
+                return a.open ? '<a class="wc" href="' + a.u + '">' + i + '<span class="go">Acessar aula <i class="fa-solid fa-arrow-right"></i></span></a>' : '<div class="wc off">' + i + '</div>'
+            }).join('')
+        }
+        document.getElementById('ord').onchange = desenha; desenha();
+    </script>
+</body>
+
+</html>

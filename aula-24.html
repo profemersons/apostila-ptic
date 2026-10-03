@@ -1,0 +1,1283 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Aula 24 | Projetos de TIC</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div id="bar"></div>
+
+    <header class="app-header">
+        <div class="hc">
+
+            <a href="index.html" class="brand">
+                <span class="logo">
+                    <i class="fa-solid fa-arrow-left"></i>
+                </span>
+
+                <span class="bt">
+                    <span class="tag">Projetos de TIC</span>
+                    <span class="cn">Voltar às aulas</span>
+                </span>
+            </a>
+
+            <span class="acts">
+                <button id="fm">A−</button>
+                <button id="fp">A+</button>
+                <button id="tt" title="Alternar tema"></button>
+            </span>
+
+        </div>
+    </header>
+
+
+    <main class="wrap narrow">
+
+        <div class="chips">
+            <span class="chip">Aula 24 • 31/08/2026</span>
+            <span class="chip">1h40</span>
+            <span class="chip">Lógica de Programação</span>
+        </div>
+
+
+        <details id="toc" class="card">
+
+            <summary>Nesta aula</summary>
+
+            <a href="#s0">O que você vai aprender nesta aula</a>
+            <a href="#s1">1. Quando precisamos repetir?</a>
+            <a href="#s2">2. O que é uma estrutura de repetição</a>
+            <a href="#s3">3. ENQUANTO: repetir enquanto uma condição for verdadeira</a>
+            <a href="#s4">4. PARA: repetir uma quantidade conhecida de vezes</a>
+            <a href="#s5">5. Contadores e acumuladores</a>
+            <a href="#s6">6. REPITA...ATÉ: repetir até uma condição acontecer</a>
+            <a href="#s7">7. Escolhendo a estrutura adequada</a>
+            <a href="#s8">8. Teste de mesa com repetições</a>
+            <a href="#s9">9. Erros comuns nos loops</a>
+            <a href="#s10">10. Resumo da aula</a>
+
+        </details>
+
+
+        <article id="conteudo" class="md">
+
+            <h1>Aula 24 — Algoritmos – Parte 3</h1>
+
+
+            <h2 id="s0">O que você vai aprender nesta aula</h2>
+
+            <p>Ao final desta aula, você será capaz de:</p>
+
+            <ul>
+
+                <li>explicar por que algoritmos precisam repetir determinadas ações;</li>
+
+                <li>identificar uma estrutura de repetição em um problema;</li>
+
+                <li>usar <b>ENQUANTO</b> para repetir enquanto uma condição for verdadeira;</li>
+
+                <li>usar <b>PARA</b> quando a quantidade de repetições for conhecida;</li>
+
+                <li>utilizar <b>contadores</b> e <b>acumuladores</b> em algoritmos;</li>
+
+                <li>compreender a estrutura <b>REPITA...ATÉ</b>;</li>
+
+                <li>executar um teste de mesa acompanhando várias repetições.</li>
+
+            </ul>
+
+
+            <hr>
+
+
+            <h2 id="s1">1. Quando precisamos repetir?</h2>
+
+            <p>
+                Na Aula 22, vimos algoritmos sequenciais.
+                Na Aula 23, aprendemos que um algoritmo pode escolher caminhos diferentes
+                usando decisões.
+            </p>
+
+            <p>
+                Mas imagine um sistema que precisa mostrar os números de 1 até 100.
+                Seria necessário escrever:
+            </p>
+
+            <pre class="code"><code>escreva(1)
+escreva(2)
+escreva(3)
+escreva(4)
+...
+escreva(100)</code></pre>
+
+            <p>
+                Isso funcionaria, mas seria uma solução enorme, repetitiva e difícil
+                de alterar.
+            </p>
+
+            <p>
+                E se fossem 1.000 números?
+                E se o número mudasse?
+            </p>
+
+            <p>
+                É justamente para isso que existem as <b>estruturas de repetição</b>.
+            </p>
+
+            <blockquote>
+                <p>
+                    <b>Ideia central:</b> quando uma mesma ação precisa ser executada
+                    várias vezes, podemos ensinar o algoritmo a repetir essa ação
+                    automaticamente.
+                </p>
+            </blockquote>
+
+
+            <h3>Repetições estão em toda parte</h3>
+
+            <ul>
+
+                <li>verificar cada produto de uma lista;</li>
+
+                <li>mostrar todos os alunos de uma turma;</li>
+
+                <li>somar vários valores;</li>
+
+                <li>tentar uma senha enquanto ela estiver incorreta;</li>
+
+                <li>processar todos os pedidos de uma fila;</li>
+
+                <li>contar quantas pessoas responderam a uma pesquisa;</li>
+
+                <li>reproduzir músicas uma após outra.</li>
+
+            </ul>
+
+
+            <h2 id="s2">2. O que é uma estrutura de repetição</h2>
+
+            <p>
+                Uma estrutura de repetição, também chamada de <b>laço</b> ou
+                <b>loop</b>, permite executar um conjunto de instruções várias vezes.
+            </p>
+
+            <p>
+                Diferentemente de simplesmente copiar e colar as mesmas instruções,
+                o algoritmo controla quando deve continuar repetindo e quando deve parar.
+            </p>
+
+            <p>
+                Todo loop precisa responder a uma pergunta:
+            </p>
+
+            <blockquote>
+                <p>
+                    <b>"Quando devo continuar e quando devo parar?"</b>
+                </p>
+            </blockquote>
+
+            <p>
+                Existem diferentes maneiras de responder a essa pergunta.
+            </p>
+
+            <div class="tw">
+
+                <table>
+
+                    <tr>
+                        <th>Estrutura</th>
+                        <th>Quando usar</th>
+                    </tr>
+
+                    <tr>
+                        <td>ENQUANTO</td>
+                        <td>Quando a repetição depende de uma condição.</td>
+                    </tr>
+
+                    <tr>
+                        <td>PARA</td>
+                        <td>Quando sabemos a quantidade ou o intervalo de repetições.</td>
+                    </tr>
+
+                    <tr>
+                        <td>REPITA...ATÉ</td>
+                        <td>Quando queremos executar pelo menos uma vez e repetir até uma condição acontecer.</td>
+                    </tr>
+
+                </table>
+
+            </div>
+
+
+            <h2 id="s3">3. ENQUANTO: repetir enquanto uma condição for verdadeira</h2>
+
+            <p>
+                A estrutura <b>ENQUANTO</b> verifica uma condição antes de cada repetição.
+            </p>
+
+            <p>
+                Estrutura básica:
+            </p>
+
+            <pre class="code"><code>enquanto condição faça
+    instruções
+fimenquanto</code></pre>
+
+            <p>
+                Exemplo:
+            </p>
+
+            <pre class="code"><code>contador ← 1
+
+enquanto contador <= 5 faça
+    escreva(contador)
+    contador ← contador + 1
+fimenquanto</code></pre>
+
+            <p>
+                O algoritmo mostra:
+            </p>
+
+            <pre class="code"><code>1
+2
+3
+4
+5</code></pre>
+
+            <p>
+                Quando <code>contador</code> passa a valer 6,
+                a condição <code>contador &lt;= 5</code> se torna falsa.
+                O loop termina.
+            </p>
+
+
+            <h3>O passo mais importante: atualizar a variável</h3>
+
+            <p>
+                Observe:
+            </p>
+
+            <pre class="code"><code>contador ← contador + 1</code></pre>
+
+            <p>
+                Essa instrução é fundamental.
+                Ela faz o contador avançar.
+            </p>
+
+            <p>
+                Se esquecermos essa atualização:
+            </p>
+
+            <pre class="code"><code>contador ← 1
+
+enquanto contador <= 5 faça
+    escreva(contador)
+fimenquanto</code></pre>
+
+            <p>
+                <code>contador</code> continuará valendo 1 para sempre.
+                A condição continuará verdadeira e o algoritmo poderá ficar
+                preso em um <b>loop infinito</b>.
+            </p>
+
+            <blockquote>
+                <p>
+                    <b>Regra prática:</b> se uma variável participa da condição
+                    de um ENQUANTO, verifique como ela será alterada dentro do loop.
+                </p>
+            </blockquote>
+
+
+            <h3>ENQUANTO no dia a dia</h3>
+
+            <p>
+                Pense em uma pessoa tentando fazer login:
+            </p>
+
+            <pre class="code"><code>enquanto senha estiver incorreta
+    pedir senha novamente</code></pre>
+
+            <p>
+                O número de tentativas pode não ser conhecido antecipadamente.
+                A repetição depende de uma condição.
+            </p>
+
+
+            <h2 id="s4">4. PARA: repetir uma quantidade conhecida de vezes</h2>
+
+            <p>
+                Quando sabemos exatamente quantas vezes queremos repetir uma ação,
+                a estrutura <b>PARA</b> costuma ser mais adequada.
+            </p>
+
+            <p>
+                Exemplo:
+            </p>
+
+            <pre class="code"><code>para i de 1 até 5 faça
+    escreva(i)
+fimpara</code></pre>
+
+            <p>
+                Resultado:
+            </p>
+
+            <pre class="code"><code>1
+2
+3
+4
+5</code></pre>
+
+            <p>
+                A variável <code>i</code> funciona como um contador automático.
+            </p>
+
+            <h3>Comparando PARA e ENQUANTO</h3>
+
+            <div class="tw">
+
+                <table>
+
+                    <tr>
+                        <th>PARA</th>
+                        <th>ENQUANTO</th>
+                    </tr>
+
+                    <tr>
+                        <td>Sabemos o intervalo ou quantidade.</td>
+                        <td>A quantidade pode depender da situação.</td>
+                    </tr>
+
+                    <tr>
+                        <td>O contador é controlado pela estrutura.</td>
+                        <td>Precisamos controlar a variável.</td>
+                    </tr>
+
+                    <tr>
+                        <td>Ex.: repetir 10 vezes.</td>
+                        <td>Ex.: repetir enquanto houver itens.</td>
+                    </tr>
+
+                </table>
+
+            </div>
+
+
+            <h3>Exemplo: mostrar uma lista numerada</h3>
+
+            <pre class="code"><code>para i de 1 até 10 faça
+    escreva("Item ", i)
+fimpara</code></pre>
+
+            <p>
+                Saída:
+            </p>
+
+            <pre class="code"><code>Item 1
+Item 2
+Item 3
+Item 4
+Item 5
+Item 6
+Item 7
+Item 8
+Item 9
+Item 10</code></pre>
+
+
+            <h3>PARA também pode contar de outros valores</h3>
+
+            <pre class="code"><code>para i de 5 até 10 faça
+    escreva(i)
+fimpara</code></pre>
+
+            <p>
+                Resultado:
+            </p>
+
+            <pre class="code"><code>5
+6
+7
+8
+9
+10</code></pre>
+
+            <p>
+                O importante é entender que a variável de controle percorre
+                um intervalo determinado.
+            </p>
+
+
+            <h2 id="s5">5. Contadores e acumuladores</h2>
+
+            <p>
+                Loops ficam ainda mais poderosos quando usamos variáveis para
+                <b>contar</b> ou <b>acumular</b> informações.
+            </p>
+
+
+            <h3>5.1 Contador</h3>
+
+            <p>
+                Um contador guarda a quantidade de vezes que algo aconteceu.
+            </p>
+
+            <pre class="code"><code>contador ← 0
+
+para i de 1 até 5 faça
+    contador ← contador + 1
+fimpara
+
+escreva(contador)</code></pre>
+
+            <p>
+                Resultado:
+            </p>
+
+            <pre class="code"><code>5</code></pre>
+
+            <p>
+                O contador começa em zero e aumenta uma unidade a cada ocorrência.
+            </p>
+
+
+            <h3>5.2 Acumulador</h3>
+
+            <p>
+                Um acumulador guarda uma soma progressiva.
+            </p>
+
+            <p>
+                Por exemplo, somar os números de 1 até 5:
+            </p>
+
+            <pre class="code"><code>soma ← 0
+
+para i de 1 até 5 faça
+    soma ← soma + i
+fimpara
+
+escreva(soma)</code></pre>
+
+            <p>
+                O resultado será:
+            </p>
+
+            <pre class="code"><code>15</code></pre>
+
+            <p>
+                Porque:
+            </p>
+
+            <pre class="code"><code>0 + 1 = 1
+1 + 2 = 3
+3 + 3 = 6
+6 + 4 = 10
+10 + 5 = 15</code></pre>
+
+
+            <h3>Contador × acumulador</h3>
+
+            <div class="tw">
+
+                <table>
+
+                    <tr>
+                        <th></th>
+                        <th>Contador</th>
+                        <th>Acumulador</th>
+                    </tr>
+
+                    <tr>
+                        <td>Objetivo</td>
+                        <td>Contar ocorrências.</td>
+                        <td>Acumular valores.</td>
+                    </tr>
+
+                    <tr>
+                        <td>Exemplo</td>
+                        <td>Quantidade de alunos.</td>
+                        <td>Soma das notas.</td>
+                    </tr>
+
+                    <tr>
+                        <td>Atualização típica</td>
+                        <td>contador ← contador + 1</td>
+                        <td>soma ← soma + valor</td>
+                    </tr>
+
+                </table>
+
+            </div>
+
+
+            <h3>Exemplo completo: média de cinco notas</h3>
+
+            <pre class="code"><code>soma ← 0
+
+para i de 1 até 5 faça
+
+    escreva("Digite a nota: ")
+    leia(nota)
+
+    soma ← soma + nota
+
+fimpara
+
+media ← soma / 5
+
+escreva("Média: ", media)</code></pre>
+
+            <p>
+                Aqui temos:
+            </p>
+
+            <ul>
+
+                <li><code>i</code> → controla as cinco repetições;</li>
+
+                <li><code>nota</code> → guarda a nota atual;</li>
+
+                <li><code>soma</code> → acumulador;</li>
+
+                <li><code>media</code> → resultado final.</li>
+
+            </ul>
+
+
+            <h2 id="s6">6. REPITA...ATÉ: repetir até uma condição acontecer</h2>
+
+            <p>
+                Existe uma situação diferente:
+                queremos executar o bloco <b>pelo menos uma vez</b> e só depois
+                verificar se devemos continuar.
+            </p>
+
+            <p>
+                Para isso podemos usar <b>REPITA...ATÉ</b>.
+            </p>
+
+            <pre class="code"><code>repita
+    instruções
+até condição</code></pre>
+
+            <p>
+                Exemplo:
+            </p>
+
+            <pre class="code"><code>repita
+
+    escreva("Digite uma senha:")
+    leia(senha)
+
+até senha = "1234"</code></pre>
+
+            <p>
+                A pessoa precisa digitar pelo menos uma senha.
+                Depois disso, o algoritmo verifica se ela está correta.
+            </p>
+
+            <p>
+                Se estiver errada, o bloco será repetido.
+                Quando a condição se tornar verdadeira, o loop termina.
+            </p>
+
+
+            <h3>ENQUANTO × REPITA...ATÉ</h3>
+
+            <div class="tw">
+
+                <table>
+
+                    <tr>
+                        <th>ENQUANTO</th>
+                        <th>REPITA...ATÉ</th>
+                    </tr>
+
+                    <tr>
+                        <td>Testa antes de executar.</td>
+                        <td>Executa antes de testar.</td>
+                    </tr>
+
+                    <tr>
+                        <td>Pode executar zero vezes.</td>
+                        <td>Executa pelo menos uma vez.</td>
+                    </tr>
+
+                    <tr>
+                        <td>Continua enquanto a condição for verdadeira.</td>
+                        <td>Continua até a condição ser verdadeira.</td>
+                    </tr>
+
+                </table>
+
+            </div>
+
+            <p>
+                Essa diferença parece pequena, mas pode mudar completamente
+                o comportamento de um algoritmo.
+            </p>
+
+
+            <h2 id="s7">7. Escolhendo a estrutura adequada</h2>
+
+            <p>
+                Uma das habilidades importantes em programação não é apenas
+                saber escrever um loop, mas saber <b>qual loop utilizar</b>.
+            </p>
+
+            <div class="tw">
+
+                <table>
+
+                    <tr>
+                        <th>Situação</th>
+                        <th>Estrutura indicada</th>
+                        <th>Por quê?</th>
+                    </tr>
+
+                    <tr>
+                        <td>Mostrar números de 1 a 10</td>
+                        <td>PARA</td>
+                        <td>O intervalo é conhecido.</td>
+                    </tr>
+
+                    <tr>
+                        <td>Ler alunos enquanto houver alunos</td>
+                        <td>ENQUANTO</td>
+                        <td>A repetição depende de uma condição.</td>
+                    </tr>
+
+                    <tr>
+                        <td>Pedir uma senha até acertar</td>
+                        <td>REPITA...ATÉ</td>
+                        <td>A tentativa precisa acontecer pelo menos uma vez.</td>
+                    </tr>
+
+                    <tr>
+                        <td>Somar 20 valores</td>
+                        <td>PARA</td>
+                        <td>A quantidade de valores é conhecida.</td>
+                    </tr>
+
+                    <tr>
+                        <td>Processar pedidos enquanto existirem pedidos</td>
+                        <td>ENQUANTO</td>
+                        <td>O fim depende da situação.</td>
+                    </tr>
+
+                </table>
+
+            </div>
+
+
+            <h3>Uma pergunta que ajuda muito</h3>
+
+            <blockquote>
+                <p>
+                    <b>Eu sei antecipadamente quantas vezes preciso repetir?</b>
+                </p>
+            </blockquote>
+
+            <p>
+                Se a resposta for <b>sim</b>, <code>PARA</code> costuma ser uma
+                boa escolha.
+            </p>
+
+            <p>
+                Se a resposta for <b>não</b>, pense em <code>ENQUANTO</code> ou
+                <code>REPITA...ATÉ</code>, dependendo de quando a condição deve
+                ser verificada.
+            </p>
+
+
+            <h2 id="s8">8. Teste de mesa com repetições</h2>
+
+            <p>
+                Na Aula 23 aprendemos a acompanhar os caminhos de decisão.
+                Agora precisamos acompanhar também <b>cada repetição</b>.
+            </p>
+
+            <p>
+                Considere:
+            </p>
+
+            <pre class="code"><code>soma ← 0
+
+para i de 1 até 4 faça
+    soma ← soma + i
+fimpara
+
+escreva(soma)</code></pre>
+
+            <p>
+                Podemos construir uma tabela:
+            </p>
+
+            <div class="tw">
+
+                <table>
+
+                    <tr>
+                        <th>Repetição</th>
+                        <th>i</th>
+                        <th>soma antes</th>
+                        <th>Operação</th>
+                        <th>soma depois</th>
+                    </tr>
+
+                    <tr>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>0</td>
+                        <td>0 + 1</td>
+                        <td>1</td>
+                    </tr>
+
+                    <tr>
+                        <td>2</td>
+                        <td>2</td>
+                        <td>1</td>
+                        <td>1 + 2</td>
+                        <td>3</td>
+                    </tr>
+
+                    <tr>
+                        <td>3</td>
+                        <td>3</td>
+                        <td>3</td>
+                        <td>3 + 3</td>
+                        <td>6</td>
+                    </tr>
+
+                    <tr>
+                        <td>4</td>
+                        <td>4</td>
+                        <td>6</td>
+                        <td>6 + 4</td>
+                        <td>10</td>
+                    </tr>
+
+                </table>
+
+            </div>
+
+            <p>
+                Portanto:
+            </p>
+
+            <pre class="code"><code>soma = 10</code></pre>
+
+
+            <h3>Teste de mesa com ENQUANTO</h3>
+
+            <pre class="code"><code>contador ← 1
+
+enquanto contador <= 3 faça
+
+    escreva(contador)
+
+    contador ← contador + 1
+
+fimenquanto</code></pre>
+
+            <div class="tw">
+
+                <table>
+
+                    <tr>
+                        <th>Momento</th>
+                        <th>contador</th>
+                        <th>contador <= 3?</th>
+                        <th>Ação</th>
+                    </tr>
+
+                    <tr>
+                        <td>Antes da 1ª</td>
+                        <td>1</td>
+                        <td>Verdadeiro</td>
+                        <td>Mostra 1</td>
+                    </tr>
+
+                    <tr>
+                        <td>Antes da 2ª</td>
+                        <td>2</td>
+                        <td>Verdadeiro</td>
+                        <td>Mostra 2</td>
+                    </tr>
+
+                    <tr>
+                        <td>Antes da 3ª</td>
+                        <td>3</td>
+                        <td>Verdadeiro</td>
+                        <td>Mostra 3</td>
+                    </tr>
+
+                    <tr>
+                        <td>Depois</td>
+                        <td>4</td>
+                        <td>Falso</td>
+                        <td>Encerra</td>
+                    </tr>
+
+                </table>
+
+            </div>
+
+
+            <h2 id="s9">9. Erros comuns nos loops</h2>
+
+            <div class="tw">
+
+                <table>
+
+                    <tr>
+                        <th>Erro</th>
+                        <th>Exemplo</th>
+                        <th>Como corrigir</th>
+                    </tr>
+
+                    <tr>
+                        <td>Loop infinito</td>
+                        <td>contador nunca é alterado.</td>
+                        <td>Atualize a variável usada na condição.</td>
+                    </tr>
+
+                    <tr>
+                        <td>Começar contador no valor errado</td>
+                        <td>Começar em 0 quando a sequência deveria começar em 1.</td>
+                        <td>Defina claramente o início.</td>
+                    </tr>
+
+                    <tr>
+                        <td>Terminar antes ou depois</td>
+                        <td>Repetir até 9 quando deveria chegar a 10.</td>
+                        <td>Teste os limites.</td>
+                    </tr>
+
+                    <tr>
+                        <td>Acumulador sem inicialização</td>
+                        <td>soma ← soma + valor sem definir soma.</td>
+                        <td>Inicialize soma, geralmente com 0.</td>
+                    </tr>
+
+                    <tr>
+                        <td>Confundir contador e acumulador</td>
+                        <td>Somar valores usando apenas +1.</td>
+                        <td>Contador conta ocorrências; acumulador acumula valores.</td>
+                    </tr>
+
+                    <tr>
+                        <td>Escolher estrutura inadequada</td>
+                        <td>Usar PARA para uma repetição sem quantidade conhecida.</td>
+                        <td>Analise como o loop deve terminar.</td>
+                    </tr>
+
+                    <tr>
+                        <td>Não testar zero ocorrências</td>
+                        <td>O ENQUANTO começa com condição falsa.</td>
+                        <td>Verifique se o algoritmo funciona mesmo sem entrar no loop.</td>
+                    </tr>
+
+                </table>
+
+            </div>
+
+
+            <h3>O perigo do loop infinito</h3>
+
+            <p>
+                Observe:
+            </p>
+
+            <pre class="code"><code>contador ← 1
+
+enquanto contador <= 5 faça
+
+    escreva(contador)
+
+fimenquanto</code></pre>
+
+            <p>
+                O problema está no fato de que <code>contador</code> nunca muda.
+            </p>
+
+            <p>
+                A condição continuará sendo:
+            </p>
+
+            <pre class="code"><code>1 <= 5</code></pre>
+
+            <p>
+                indefinidamente.
+            </p>
+
+            <blockquote>
+                <p>
+                    <b>Antes de executar um loop, pergunte:</b>
+                    "Qual variável ou acontecimento fará a condição mudar?"
+                </p>
+            </blockquote>
+
+
+            <h2 id="s10">10. Resumo da aula</h2>
+
+            <ul>
+
+                <li>
+                    Estruturas de repetição permitem executar várias vezes
+                    um mesmo conjunto de instruções.
+                </li>
+
+                <li>
+                    Todo loop precisa ter uma forma clara de determinar
+                    <b>quando continuar e quando parar</b>.
+                </li>
+
+                <li>
+                    <b>ENQUANTO</b> testa a condição antes de cada repetição.
+                </li>
+
+                <li>
+                    <b>PARA</b> é adequado quando o intervalo ou número
+                    de repetições é conhecido.
+                </li>
+
+                <li>
+                    <b>REPITA...ATÉ</b> executa primeiro e testa depois,
+                    garantindo pelo menos uma execução.
+                </li>
+
+                <li>
+                    <b>Contadores</b> registram quantas vezes algo aconteceu.
+                </li>
+
+                <li>
+                    <b>Acumuladores</b> guardam uma soma ou outro valor
+                    que vai sendo atualizado.
+                </li>
+
+                <li>
+                    Um <b>loop infinito</b> acontece quando a condição de parada
+                    nunca se torna falsa.
+                </li>
+
+                <li>
+                    O <b>teste de mesa</b> ajuda a acompanhar cada repetição
+                    e descobrir erros.
+                </li>
+
+            </ul>
+
+
+            <h3>Glossário</h3>
+
+            <ul>
+
+                <li>
+                    <b>Repetição:</b> execução de um conjunto de instruções várias vezes.
+                </li>
+
+                <li>
+                    <b>Loop:</b> estrutura utilizada para controlar uma repetição.
+                </li>
+
+                <li>
+                    <b>ENQUANTO:</b> repete enquanto uma condição for verdadeira.
+                </li>
+
+                <li>
+                    <b>PARA:</b> repete seguindo um intervalo ou quantidade definida.
+                </li>
+
+                <li>
+                    <b>REPITA...ATÉ:</b> executa o bloco e repete até que uma condição
+                    seja verdadeira.
+                </li>
+
+                <li>
+                    <b>Contador:</b> variável utilizada para contar ocorrências.
+                </li>
+
+                <li>
+                    <b>Acumulador:</b> variável que guarda progressivamente um valor,
+                    geralmente uma soma.
+                </li>
+
+                <li>
+                    <b>Loop infinito:</b> repetição que não consegue chegar à
+                    condição de parada.
+                </li>
+
+            </ul>
+
+
+            <h3>Referências</h3>
+
+            <p><b>Referências brasileiras</b></p>
+
+            <ul>
+
+                <li>
+                    BRASIL. Ministério da Educação.
+                    <i>Base Nacional Comum Curricular (BNCC)</i>.
+                    Brasília: MEC, 2018.
+                </li>
+
+                <li>
+                    SOCIEDADE BRASILEIRA DE COMPUTAÇÃO (SBC).
+                    <i>Diretrizes para ensino de Computação na Educação Básica</i>.
+                    Porto Alegre: SBC, 2019.
+                </li>
+
+                <li>
+                    CENTRO DE INOVAÇÃO PARA A EDUCAÇÃO BRASILEIRA (CIEB).
+                    <i>Currículo de Referência em Tecnologia e Computação</i>.
+                    São Paulo: CIEB, 2018.
+                </li>
+
+                <li>
+                    FORBELLONE, André Luiz Villar; EBERSPÄCHER, Henri Frederico.
+                    <i>Lógica de programação: a construção de algoritmos e estruturas de dados</i>.
+                    São Paulo: Pearson Prentice Hall.
+                </li>
+
+                <li>
+                    MANZANO, José Augusto N. G.; OLIVEIRA, Jayr Figueiredo de.
+                    <i>Algoritmos: lógica para desenvolvimento de programação de computadores</i>.
+                    São Paulo: Érica.
+                </li>
+
+                <li>
+                    ASCENCIO, Ana Fernanda Gomes; CAMPOS, Edilene Aparecida Veneruchi de.
+                    <i>Fundamentos da programação de computadores: algoritmos, Pascal, C/C++ e Java</i>.
+                    São Paulo: Pearson Prentice Hall.
+                </li>
+
+                <li>
+                    RAABE, André; ZORZO, Avelino F.; BLIKSTEIN, Paulo (orgs.).
+                    <i>Computação na Educação Básica: fundamentos e experiências</i>.
+                    Porto Alegre: Penso, 2020.
+                </li>
+
+            </ul>
+
+            <p><b>Referência internacional</b></p>
+
+            <ul>
+
+                <li>
+                    WING, Jeannette M.
+                    <i>Computational thinking</i>.
+                    Communications of the ACM, v. 49, n. 3, p. 33–35, 2006.
+                </li>
+
+            </ul>
+
+        </article>
+
+
+        <section class="card">
+
+            <h2>
+                <i class="fa-solid fa-circle-question"></i>
+                Atividade 1 — Quiz
+            </h2>
+
+            <div id="quiz"></div>
+
+        </section>
+
+
+        <section class="card">
+
+            <h2>
+                <i class="fa-solid fa-puzzle-piece"></i>
+                Atividade 2 — Praticando repetições
+            </h2>
+
+            <div id="ativ"></div>
+
+        </section>
+
+    </main>
+
+
+    <script>
+
+        var TIT = 'Aula 24 · Algoritmos – Parte 3',
+            ARQ = 'aula-24';
+
+
+        var QUIZ = [
+
+            {
+                "q": "Um algoritmo precisa mostrar os números de 1 até 100. Qual estrutura é mais adequada?",
+                "o": [
+                    "SE",
+                    "PARA",
+                    "REPITA...ATÉ sem nenhuma condição",
+                    "Somente comandos escreva repetidos manualmente"
+                ],
+                "a": 1,
+                "e": "Como sabemos o intervalo de 1 até 100, a estrutura PARA é adequada para controlar a repetição."
+            },
+
+            {
+                "q": "Qual é o principal problema deste algoritmo? contador ← 1; enquanto contador <= 5 faça; escreva(contador); fimenquanto",
+                "o": [
+                    "O contador começa em 1.",
+                    "A condição está correta.",
+                    "O contador nunca é atualizado e o loop pode ficar infinito.",
+                    "O comando escreva não pode aparecer em um loop."
+                ],
+                "a": 2,
+                "e": "Como contador nunca muda, continuará valendo 1. A condição continuará verdadeira e a repetição não terminará."
+            },
+
+            {
+                "q": "Qual é a diferença principal entre um contador e um acumulador?",
+                "o": [
+                    "O contador soma valores e o acumulador conta repetições.",
+                    "O contador conta ocorrências e o acumulador guarda progressivamente um valor, como uma soma.",
+                    "Não existe diferença.",
+                    "O contador só pode guardar texto."
+                ],
+                "a": 1,
+                "e": "Um contador normalmente aumenta de uma unidade para registrar ocorrências. Um acumulador combina valores ao longo das repetições."
+            },
+
+            {
+                "q": "Uma aplicação precisa pedir uma senha ao usuário pelo menos uma vez e continuar pedindo até que ela esteja correta. Qual estrutura representa melhor essa situação?",
+                "o": [
+                    "REPITA...ATÉ",
+                    "PARA",
+                    "Somente SE",
+                    "Nenhuma estrutura de repetição"
+                ],
+                "a": 0,
+                "e": "REPITA...ATÉ executa o bloco primeiro e verifica a condição depois, garantindo pelo menos uma tentativa."
+            },
+
+            {
+                "q": "Considere soma ← 0 e, dentro de um PARA de 1 até 4, soma ← soma + i. Qual será o valor final de soma?",
+                "o": [
+                    "4",
+                    "5",
+                    "10",
+                    "16"
+                ],
+                "a": 2,
+                "e": "A soma será 0 + 1 + 2 + 3 + 4 = 10. A variável soma funciona como acumulador."
+            }
+
+        ];
+
+
+        var ATIV = {
+
+            "ta": "Parte A — Qual estrutura usar?",
+
+            "ia": "Escolha a estrutura de repetição mais adequada para cada situação.",
+
+            "la": [
+                "ENQUANTO",
+                "PARA",
+                "REPITA...ATÉ"
+            ],
+
+            "a": [
+
+                ["Mostrar os números de 1 até 20.", 1],
+
+                ["Pedir uma senha pelo menos uma vez e continuar até acertar.", 2],
+
+                ["Processar pedidos enquanto ainda existirem pedidos na fila.", 0],
+
+                ["Calcular a soma de 30 números.", 1],
+
+                ["Pedir confirmação ao usuário até ele responder \"SIM\".", 2],
+
+                ["Percorrer as posições de 1 até 10 de uma lista.", 1],
+
+                ["Continuar lendo nomes enquanto o usuário não digitar \"FIM\".", 0],
+
+                ["Executar uma ação pelo menos uma vez antes de verificar a condição de parada.", 2]
+
+            ],
+
+
+            "tb": "Parte B — Organize o loop",
+
+            "ib": "Ordene os passos para criar um algoritmo que mostre os números de 1 até 5 usando ENQUANTO. Use as setas.",
+
+            "b": [
+
+                "Inicializar contador ← 1",
+
+                "Verificar se contador <= 5",
+
+                "Mostrar contador",
+
+                "Aumentar contador ← contador + 1",
+
+                "Voltar para verificar a condição"
+
+            ],
+
+
+            "tc": "Parte C — Qual é a saída?",
+
+            "c": {
+
+                "q": "Considere: soma ← 0; para i de 1 até 3 faça soma ← soma + i; fimpara; escreva(soma). O que será mostrado?",
+
+                "o": [
+                    "3",
+                    "5",
+                    "6"
+                ],
+
+                "r": 2
+
+            },
+
+
+            "td": "Parte D — Encontre o erro",
+
+            "d": {
+
+                "q": "Qual é o problema deste algoritmo? contador ← 1; enquanto contador <= 10 faça; escreva(contador); fimenquanto",
+
+                "o": [
+                    "O contador deveria começar em 10.",
+                    "Falta atualizar o contador dentro do loop.",
+                    "O comando escreva não pode estar dentro do loop."
+                ],
+
+                "r": 1
+
+            }
+
+        };
+
+    </script>
+
+
+    <script src="app.js"></script>
+
+</body>
+
+</html>

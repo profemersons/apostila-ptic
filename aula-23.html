@@ -1,0 +1,1281 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Aula 23 | Projetos de TIC</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div id="bar"></div>
+
+    <header class="app-header">
+        <div class="hc">
+
+            <a href="index.html" class="brand">
+                <span class="logo">
+                    <i class="fa-solid fa-arrow-left"></i>
+                </span>
+
+                <span class="bt">
+                    <span class="tag">Projetos de TIC</span>
+                    <span class="cn">Voltar às aulas</span>
+                </span>
+            </a>
+
+            <span class="acts">
+                <button id="fm">A−</button>
+                <button id="fp">A+</button>
+                <button id="tt" title="Alternar tema"></button>
+            </span>
+
+        </div>
+    </header>
+
+    <main class="wrap narrow">
+
+        <div class="chips">
+            <span class="chip">Aula 23 • 24/08/2026</span>
+            <span class="chip">1h40</span>
+            <span class="chip">Lógica de Programação</span>
+        </div>
+
+        <details id="toc" class="card">
+            <summary>Nesta aula</summary>
+
+            <a href="#s0">O que você vai aprender nesta aula</a>
+            <a href="#s1">1. Quando a sequência não é suficiente</a>
+            <a href="#s2">2. O que é uma decisão em um algoritmo</a>
+            <a href="#s3">3. Operadores relacionais</a>
+            <a href="#s4">4. Estrutura SE</a>
+            <a href="#s5">5. Estrutura SE...SENÃO</a>
+            <a href="#s6">6. Decisões com várias possibilidades</a>
+            <a href="#s7">7. Operadores lógicos</a>
+            <a href="#s8">8. Teste de mesa com decisões</a>
+            <a href="#s9">9. Erros comuns ao criar decisões</a>
+            <a href="#s10">10. Resumo da aula</a>
+        </details>
+
+        <article id="conteudo" class="md">
+
+            <h1>Aula 23 — Algoritmos – Parte 2</h1>
+
+            <h2 id="s0">O que você vai aprender nesta aula</h2>
+
+            <p>Ao final desta aula, você será capaz de:</p>
+
+            <ul>
+                <li>explicar por que alguns problemas precisam de decisões;</li>
+                <li>usar operadores relacionais para comparar valores;</li>
+                <li>escrever algoritmos usando as estruturas <b>SE</b> e <b>SE...SENÃO</b>;</li>
+                <li>combinar condições usando operadores lógicos;</li>
+                <li>representar decisões em pseudocódigo e fluxogramas;</li>
+                <li>executar um teste de mesa envolvendo diferentes caminhos de um algoritmo.</li>
+            </ul>
+
+            <hr>
+
+            <h2 id="s1">1. Quando a sequência não é suficiente</h2>
+
+            <p>
+                Na Aula 22, trabalhamos com algoritmos <b>sequenciais</b>: as instruções
+                eram executadas uma depois da outra, sempre na mesma ordem.
+            </p>
+
+            <p>
+                Mas muitos problemas do mundo real não funcionam assim.
+                Às vezes, o próximo passo depende de uma condição.
+            </p>
+
+            <p>
+                Imagine um sistema escolar que precisa verificar se um aluno foi aprovado.
+                Ele não pode simplesmente mostrar "Aprovado" para todos.
+                Primeiro precisa analisar a média.
+            </p>
+
+            <pre class="code"><code>Se média >= 6
+    mostrar "Aprovado"
+Senão
+    mostrar "Em recuperação"</code></pre>
+
+            <p>
+                O algoritmo precisa <b>tomar uma decisão</b>.
+            </p>
+
+            <blockquote>
+                <p>
+                    <b>Ideia central:</b> uma estrutura de decisão permite que um algoritmo
+                    escolha caminhos diferentes de acordo com uma condição.
+                </p>
+            </blockquote>
+
+            <p>Exemplos de decisões presentes em sistemas:</p>
+
+            <ul>
+                <li>Se a senha estiver correta, permitir acesso.</li>
+                <li>Se houver estoque, liberar a compra.</li>
+                <li>Se a idade for maior ou igual a 18, permitir determinada operação.</li>
+                <li>Se a temperatura estiver acima do limite, ligar o ventilador.</li>
+                <li>Se o pagamento for aprovado, confirmar o pedido.</li>
+            </ul>
+
+
+            <h2 id="s2">2. O que é uma decisão em um algoritmo</h2>
+
+            <p>
+                Uma decisão acontece quando o algoritmo precisa verificar uma
+                <b>condição</b> antes de escolher o próximo passo.
+            </p>
+
+            <p>
+                Uma condição é uma pergunta que pode ter uma resposta lógica:
+                <b>verdadeiro</b> ou <b>falso</b>.
+            </p>
+
+            <div class="tw">
+                <table>
+                    <tr>
+                        <th>Condição</th>
+                        <th>Resposta possível</th>
+                    </tr>
+
+                    <tr>
+                        <td>idade >= 18</td>
+                        <td>Verdadeiro ou falso</td>
+                    </tr>
+
+                    <tr>
+                        <td>nota >= 6</td>
+                        <td>Verdadeiro ou falso</td>
+                    </tr>
+
+                    <tr>
+                        <td>senha = "1234"</td>
+                        <td>Verdadeiro ou falso</td>
+                    </tr>
+
+                    <tr>
+                        <td>estoque > 0</td>
+                        <td>Verdadeiro ou falso</td>
+                    </tr>
+                </table>
+            </div>
+
+            <p>
+                É importante perceber que a condição <b>não é uma ação</b>.
+                Ela é uma pergunta que ajuda o algoritmo a decidir qual ação executar.
+            </p>
+
+            <p>
+                Por exemplo:
+            </p>
+
+            <pre class="code"><code>idade >= 18</code></pre>
+
+            <p>
+                significa:
+                <b>"A idade é maior ou igual a 18?"</b>
+            </p>
+
+            <p>
+                Já:
+            </p>
+
+            <pre class="code"><code>mostrar "Entrada permitida"</code></pre>
+
+            <p>
+                é uma ação.
+            </p>
+
+            <h3>O modelo mental</h3>
+
+            <div class="fl">
+
+                <div class="fn t">
+                    Início
+                </div>
+
+                <div class="fa">↓</div>
+
+                <div class="fn">
+                    Ler idade
+                    <small>entrada</small>
+                </div>
+
+                <div class="fa">↓</div>
+
+                <div class="fn">
+                    idade >= 18?
+                    <small>decisão</small>
+                </div>
+
+                <div class="fa">↙ &nbsp;&nbsp;&nbsp;&nbsp; ↘</div>
+
+                <div class="fb">
+
+                    <div class="fn">
+                        Sim
+                        <small>permitir entrada</small>
+                    </div>
+
+                    <div class="fn">
+                        Não
+                        <small>negar entrada</small>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <p class="cap">
+                Uma decisão divide o caminho do algoritmo de acordo com uma condição.
+            </p>
+
+
+            <h2 id="s3">3. Operadores relacionais</h2>
+
+            <p>
+                Para criar condições, precisamos comparar valores.
+                Os símbolos utilizados para fazer essas comparações são chamados de
+                <b>operadores relacionais</b>.
+            </p>
+
+            <div class="tw">
+                <table>
+
+                    <tr>
+                        <th>Operador</th>
+                        <th>Significado</th>
+                        <th>Exemplo</th>
+                    </tr>
+
+                    <tr>
+                        <td>&gt;</td>
+                        <td>maior que</td>
+                        <td>idade &gt; 18</td>
+                    </tr>
+
+                    <tr>
+                        <td>&lt;</td>
+                        <td>menor que</td>
+                        <td>nota &lt; 6</td>
+                    </tr>
+
+                    <tr>
+                        <td>&gt;=</td>
+                        <td>maior ou igual a</td>
+                        <td>idade &gt;= 18</td>
+                    </tr>
+
+                    <tr>
+                        <td>&lt;=</td>
+                        <td>menor ou igual a</td>
+                        <td>nota &lt;= 10</td>
+                    </tr>
+
+                    <tr>
+                        <td>=</td>
+                        <td>igual a</td>
+                        <td>senha = "1234"</td>
+                    </tr>
+
+                    <tr>
+                        <td>&lt;&gt;</td>
+                        <td>diferente de</td>
+                        <td>status &lt;&gt; "pago"</td>
+                    </tr>
+
+                </table>
+            </div>
+
+            <h3>Exemplos</h3>
+
+            <pre class="code"><code>7 > 5       → verdadeiro
+7 < 5       → falso
+7 >= 7      → verdadeiro
+7 = 8       → falso
+10 <> 3     → verdadeiro</code></pre>
+
+            <p>
+                O resultado de uma comparação é sempre um valor lógico:
+                <b>verdadeiro</b> ou <b>falso</b>.
+            </p>
+
+            <h3>Um cuidado importante</h3>
+
+            <p>
+                Compare com atenção o significado de cada operador.
+            </p>
+
+            <p>
+                Se a regra for:
+            </p>
+
+            <blockquote>
+                <p>
+                    "Aluno com média <b>6 ou mais</b> está aprovado."
+                </p>
+            </blockquote>
+
+            <p>
+                a condição correta é:
+            </p>
+
+            <pre class="code"><code>media >= 6</code></pre>
+
+            <p>
+                Usar apenas <code>media > 6</code> faria com que uma média exatamente
+                igual a 6 fosse considerada reprovada.
+            </p>
+
+
+            <h2 id="s4">4. Estrutura SE</h2>
+
+            <p>
+                A estrutura <b>SE</b> permite executar uma ação somente quando
+                uma condição for verdadeira.
+            </p>
+
+            <p>Estrutura básica:</p>
+
+            <pre class="code"><code>se condição então
+    instrução
+fimse</code></pre>
+
+            <p>
+                Exemplo:
+            </p>
+
+            <pre class="code"><code>se idade >= 18 então
+    escreva("Maior de idade")
+fimse</code></pre>
+
+            <p>
+                Se a idade for 20, a mensagem será mostrada.
+                Se a idade for 16, nada acontecerá dentro desse bloco.
+            </p>
+
+            <h3>Exemplo completo</h3>
+
+            <pre class="code"><code>algoritmo "VerificaIdade"
+
+var
+   idade: inteiro
+
+inicio
+
+   escreva("Digite sua idade: ")
+   leia(idade)
+
+   se idade >= 18 então
+      escreva("Acesso permitido")
+   fimse
+
+fimalgoritmo</code></pre>
+
+            <p>
+                Observe que a decisão não substitui a sequência.
+                O algoritmo continua sendo executado de cima para baixo,
+                mas agora existe um possível caminho que pode ou não ser executado.
+            </p>
+
+
+            <h2 id="s5">5. Estrutura SE...SENÃO</h2>
+
+            <p>
+                E se precisarmos executar uma ação quando a condição for verdadeira
+                <b>e outra ação quando for falsa</b>?
+            </p>
+
+            <p>
+                Nesse caso usamos <b>SE...SENÃO</b>.
+            </p>
+
+            <pre class="code"><code>se condição então
+    instrução 1
+senão
+    instrução 2
+fimse</code></pre>
+
+            <h3>Exemplo: aprovação</h3>
+
+            <pre class="code"><code>algoritmo "SituacaoAluno"
+
+var
+   media: real
+
+inicio
+
+   escreva("Digite a média: ")
+   leia(media)
+
+   se media >= 6 então
+      escreva("Aprovado")
+   senão
+      escreva("Não aprovado")
+   fimse
+
+fimalgoritmo</code></pre>
+
+            <p>
+                Existem dois caminhos possíveis:
+            </p>
+
+            <div class="tw">
+                <table>
+
+                    <tr>
+                        <th>Condição</th>
+                        <th>Caminho</th>
+                        <th>Resultado</th>
+                    </tr>
+
+                    <tr>
+                        <td>media >= 6 é verdadeira</td>
+                        <td>SE</td>
+                        <td>Aprovado</td>
+                    </tr>
+
+                    <tr>
+                        <td>media >= 6 é falsa</td>
+                        <td>SENÃO</td>
+                        <td>Não aprovado</td>
+                    </tr>
+
+                </table>
+            </div>
+
+            <h3>Fluxograma</h3>
+
+            <div class="fl">
+
+                <div class="fn t">Início</div>
+
+                <div class="fa">↓</div>
+
+                <div class="fn">
+                    Ler média
+                    <small>entrada</small>
+                </div>
+
+                <div class="fa">↓</div>
+
+                <div class="fn">
+                    média >= 6?
+                    <small>decisão</small>
+                </div>
+
+                <div class="fa">↙ &nbsp;&nbsp;&nbsp;&nbsp; ↘</div>
+
+                <div class="fb">
+
+                    <div class="fn">
+                        Sim
+                        <small>Mostrar "Aprovado"</small>
+                    </div>
+
+                    <div class="fn">
+                        Não
+                        <small>Mostrar "Não aprovado"</small>
+                    </div>
+
+                </div>
+
+                <div class="fa">↘ &nbsp;&nbsp;&nbsp;&nbsp; ↙</div>
+
+                <div class="fn t">Fim</div>
+
+            </div>
+
+            <p class="cap">
+                As duas possibilidades voltam para o fluxo principal e chegam ao fim.
+            </p>
+
+
+            <h2 id="s6">6. Decisões com várias possibilidades</h2>
+
+            <p>
+                Alguns problemas possuem mais de duas possibilidades.
+            </p>
+
+            <p>
+                Imagine um sistema que classifica uma nota:
+            </p>
+
+            <ul>
+                <li>nota menor que 5 → insuficiente;</li>
+                <li>nota entre 5 e 6,9 → recuperação;</li>
+                <li>nota igual ou maior que 7 → aprovado.</li>
+            </ul>
+
+            <p>
+                Podemos representar essa situação com decisões encadeadas.
+            </p>
+
+            <pre class="code"><code>se nota < 5 então
+    escreva("Insuficiente")
+senão
+    se nota < 7 então
+        escreva("Recuperação")
+    senão
+        escreva("Aprovado")
+    fimse
+fimse</code></pre>
+
+            <p>
+                O segundo <code>se</code> só é analisado quando a primeira condição
+                foi falsa.
+            </p>
+
+            <h3>Outro exemplo: faixa etária</h3>
+
+            <pre class="code"><code>se idade < 12 então
+    escreva("Criança")
+senão
+    se idade < 18 então
+        escreva("Adolescente")
+    senão
+        escreva("Adulto")
+    fimse
+fimse</code></pre>
+
+            <p>
+                A ordem das condições importa.
+                O algoritmo testa uma condição e só passa para a próxima
+                quando necessário.
+            </p>
+
+            <blockquote>
+                <p>
+                    <b>Dica:</b> quando houver muitas possibilidades, escreva primeiro
+                    as regras em linguagem comum. Depois transforme cada regra
+                    em uma condição.
+                </p>
+            </blockquote>
+
+
+            <h2 id="s7">7. Operadores lógicos</h2>
+
+            <p>
+                Às vezes uma decisão depende de <b>mais de uma condição</b>.
+                Nesse caso usamos operadores lógicos.
+            </p>
+
+            <div class="tw">
+                <table>
+
+                    <tr>
+                        <th>Operador</th>
+                        <th>Ideia</th>
+                        <th>Exemplo</th>
+                    </tr>
+
+                    <tr>
+                        <td>e</td>
+                        <td>As duas condições precisam ser verdadeiras.</td>
+                        <td>idade >= 18 e possuiDocumento = verdadeiro</td>
+                    </tr>
+
+                    <tr>
+                        <td>ou</td>
+                        <td>Pelo menos uma condição precisa ser verdadeira.</td>
+                        <td>pix = verdadeiro ou dinheiro = verdadeiro</td>
+                    </tr>
+
+                    <tr>
+                        <td>não</td>
+                        <td>Inverte o valor lógico.</td>
+                        <td>não bloqueado</td>
+                    </tr>
+
+                </table>
+            </div>
+
+            <h3>Operador E</h3>
+
+            <p>
+                Considere:
+            </p>
+
+            <pre class="code"><code>idade >= 18 e documento = verdadeiro</code></pre>
+
+            <p>
+                Para a expressão inteira ser verdadeira, <b>as duas condições
+                precisam ser verdadeiras</b>.
+            </p>
+
+            <div class="tw">
+                <table>
+
+                    <tr>
+                        <th>Idade >= 18</th>
+                        <th>Documento</th>
+                        <th>Resultado</th>
+                    </tr>
+
+                    <tr>
+                        <td>Verdadeiro</td>
+                        <td>Verdadeiro</td>
+                        <td>Verdadeiro</td>
+                    </tr>
+
+                    <tr>
+                        <td>Verdadeiro</td>
+                        <td>Falso</td>
+                        <td>Falso</td>
+                    </tr>
+
+                    <tr>
+                        <td>Falso</td>
+                        <td>Verdadeiro</td>
+                        <td>Falso</td>
+                    </tr>
+
+                    <tr>
+                        <td>Falso</td>
+                        <td>Falso</td>
+                        <td>Falso</td>
+                    </tr>
+
+                </table>
+            </div>
+
+            <h3>Operador OU</h3>
+
+            <p>
+                Agora considere:
+            </p>
+
+            <pre class="code"><code>pix = verdadeiro ou dinheiro = verdadeiro</code></pre>
+
+            <p>
+                Basta <b>uma das opções</b> ser verdadeira para a expressão inteira
+                ser verdadeira.
+            </p>
+
+            <div class="tw">
+                <table>
+
+                    <tr>
+                        <th>Pix</th>
+                        <th>Dinheiro</th>
+                        <th>Resultado</th>
+                    </tr>
+
+                    <tr>
+                        <td>Verdadeiro</td>
+                        <td>Verdadeiro</td>
+                        <td>Verdadeiro</td>
+                    </tr>
+
+                    <tr>
+                        <td>Verdadeiro</td>
+                        <td>Falso</td>
+                        <td>Verdadeiro</td>
+                    </tr>
+
+                    <tr>
+                        <td>Falso</td>
+                        <td>Verdadeiro</td>
+                        <td>Verdadeiro</td>
+                    </tr>
+
+                    <tr>
+                        <td>Falso</td>
+                        <td>Falso</td>
+                        <td>Falso</td>
+                    </tr>
+
+                </table>
+            </div>
+
+            <h3>Exemplo prático</h3>
+
+            <p>
+                Um sistema permite uma atividade somente para estudantes
+                com idade entre 15 e 18 anos.
+            </p>
+
+            <pre class="code"><code>se idade >= 15 e idade <= 18 então
+    escreva("Pode participar")
+senão
+    escreva("Não pode participar")
+fimse</code></pre>
+
+            <p>
+                Aqui as duas condições precisam ser verdadeiras:
+                a idade deve ser <b>pelo menos 15</b> e <b>no máximo 18</b>.
+            </p>
+
+
+            <h2 id="s8">8. Teste de mesa com decisões</h2>
+
+            <p>
+                Na Aula 22 vimos que o teste de mesa permite acompanhar os valores
+                das variáveis durante a execução.
+            </p>
+
+            <p>
+                Com decisões, precisamos acompanhar também <b>qual caminho foi escolhido</b>.
+            </p>
+
+            <p>Considere o algoritmo:</p>
+
+            <pre class="code"><code>algoritmo "Desconto"
+
+var
+   idade: inteiro
+   preco: real
+
+inicio
+
+   idade ← 16
+   preco ← 100
+
+   se idade < 18 então
+      preco ← preco * 0.90
+   fimse
+
+   escreva(preco)
+
+fimalgoritmo</code></pre>
+
+            <p>
+                Como a idade é 16, a condição
+                <code>idade &lt; 18</code> é verdadeira.
+                Portanto, o desconto será aplicado.
+            </p>
+
+            <div class="tw">
+                <table>
+
+                    <tr>
+                        <th>Passo</th>
+                        <th>Instrução</th>
+                        <th>idade</th>
+                        <th>preco</th>
+                        <th>Condição</th>
+                    </tr>
+
+                    <tr>
+                        <td>1</td>
+                        <td>idade ← 16</td>
+                        <td>16</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>2</td>
+                        <td>preco ← 100</td>
+                        <td>16</td>
+                        <td>100</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>3</td>
+                        <td>idade &lt; 18?</td>
+                        <td>16</td>
+                        <td>100</td>
+                        <td>Verdadeiro</td>
+                    </tr>
+
+                    <tr>
+                        <td>4</td>
+                        <td>preco ← preco * 0.90</td>
+                        <td>16</td>
+                        <td>90</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>5</td>
+                        <td>escreva(preco)</td>
+                        <td>16</td>
+                        <td>90</td>
+                        <td></td>
+                    </tr>
+
+                </table>
+            </div>
+
+            <p>
+                O resultado mostrado será:
+            </p>
+
+            <pre class="code"><code>90</code></pre>
+
+            <h3>E se a idade fosse 20?</h3>
+
+            <p>
+                Nesse caso:
+            </p>
+
+            <pre class="code"><code>idade < 18</code></pre>
+
+            <p>
+                seria falso.
+                O bloco do <code>se</code> não seria executado e o preço continuaria
+                sendo 100.
+            </p>
+
+            <blockquote>
+                <p>
+                    <b>Teste de mesa com decisão:</b>
+                    acompanhe os valores das variáveis, avalie cada condição
+                    e marque qual caminho foi executado.
+                </p>
+            </blockquote>
+
+
+            <h2 id="s9">9. Erros comuns ao criar decisões</h2>
+
+            <div class="tw">
+                <table>
+
+                    <tr>
+                        <th>Erro</th>
+                        <th>Exemplo</th>
+                        <th>Como corrigir</th>
+                    </tr>
+
+                    <tr>
+                        <td>Usar o operador errado</td>
+                        <td>media &gt; 6 quando a regra é "6 ou mais"</td>
+                        <td>Use media &gt;= 6</td>
+                    </tr>
+
+                    <tr>
+                        <td>Esquecer um caminho</td>
+                        <td>Verificar apenas quem foi aprovado</td>
+                        <td>Use SENÃO quando o outro caso também precisar de tratamento</td>
+                    </tr>
+
+                    <tr>
+                        <td>Confundir condição com ação</td>
+                        <td>se "mostrar aprovado"</td>
+                        <td>A condição deve ser uma pergunta lógica</td>
+                    </tr>
+
+                    <tr>
+                        <td>Usar muitas condições sem organizar</td>
+                        <td>Vários SE encadeados sem explicar as regras</td>
+                        <td>Escreva primeiro as possibilidades em linguagem comum</td>
+                    </tr>
+
+                    <tr>
+                        <td>Inverter a lógica</td>
+                        <td>Permitir acesso quando senha estiver incorreta</td>
+                        <td>Teste também casos verdadeiros e falsos</td>
+                    </tr>
+
+                    <tr>
+                        <td>Não testar os limites</td>
+                        <td>Testar 5 e 7, mas nunca 6</td>
+                        <td>Teste valores exatamente nos limites</td>
+                    </tr>
+
+                    <tr>
+                        <td>Não testar situações diferentes</td>
+                        <td>Testar apenas um aluno aprovado</td>
+                        <td>Teste aprovação, reprovação e valores de fronteira</td>
+                    </tr>
+
+                </table>
+            </div>
+
+            <h3>Um princípio importante</h3>
+
+            <p>
+                Se um algoritmo contém uma condição:
+            </p>
+
+            <blockquote>
+                <p>
+                    <b>Teste pelo menos um caso em que ela seja verdadeira
+                    e um caso em que ela seja falsa.</b>
+                </p>
+            </blockquote>
+
+            <p>
+                E, quando existirem limites, teste também os valores exatamente
+                sobre esses limites.
+            </p>
+
+            <p>
+                Por exemplo, para:
+            </p>
+
+            <pre class="code"><code>se nota >= 6 então</code></pre>
+
+            <p>não basta testar:</p>
+
+            <ul>
+                <li>nota = 8;</li>
+                <li>nota = 4.</li>
+            </ul>
+
+            <p>
+                Também é importante testar:
+            </p>
+
+            <ul>
+                <li><b>nota = 6</b> → valor exatamente no limite;</li>
+                <li><b>nota = 5,9</b> → imediatamente abaixo do limite.</li>
+            </ul>
+
+
+            <h2 id="s10">10. Resumo da aula</h2>
+
+            <ul>
+
+                <li>
+                    A <b>estrutura de decisão</b> permite que um algoritmo escolha
+                    caminhos diferentes.
+                </li>
+
+                <li>
+                    Uma <b>condição</b> é uma expressão que resulta em
+                    <b>verdadeiro</b> ou <b>falso</b>.
+                </li>
+
+                <li>
+                    Os <b>operadores relacionais</b> permitem comparar valores:
+                    <code>&gt;</code>, <code>&lt;</code>, <code>&gt;=</code>,
+                    <code>&lt;=</code>, <code>=</code> e <code>&lt;&gt;</code>.
+                </li>
+
+                <li>
+                    A estrutura <b>SE</b> executa uma ação quando a condição
+                    é verdadeira.
+                </li>
+
+                <li>
+                    A estrutura <b>SE...SENÃO</b> permite definir dois caminhos:
+                    um para verdadeiro e outro para falso.
+                </li>
+
+                <li>
+                    Decisões podem ser encadeadas quando existem
+                    <b>várias possibilidades</b>.
+                </li>
+
+                <li>
+                    Os operadores <b>E</b>, <b>OU</b> e <b>NÃO</b> permitem
+                    combinar condições.
+                </li>
+
+                <li>
+                    O <b>teste de mesa</b> deve verificar tanto os valores das
+                    variáveis quanto o caminho escolhido pelo algoritmo.
+                </li>
+
+            </ul>
+
+            <h3>Glossário</h3>
+
+            <ul>
+
+                <li>
+                    <b>Condição:</b> expressão que pode ser verdadeira ou falsa.
+                </li>
+
+                <li>
+                    <b>Decisão:</b> escolha de um caminho do algoritmo com base
+                    em uma condição.
+                </li>
+
+                <li>
+                    <b>Operador relacional:</b> símbolo utilizado para comparar valores.
+                </li>
+
+                <li>
+                    <b>SE:</b> estrutura que executa instruções quando uma condição
+                    é verdadeira.
+                </li>
+
+                <li>
+                    <b>SENÃO:</b> caminho executado quando a condição do SE é falsa.
+                </li>
+
+                <li>
+                    <b>Operador lógico:</b> permite combinar ou inverter condições.
+                </li>
+
+                <li>
+                    <b>Caminho:</b> sequência de instruções executada em uma
+                    determinada situação.
+                </li>
+
+                <li>
+                    <b>Valor de fronteira:</b> valor exatamente no limite de
+                    uma condição e que deve ser testado.
+                </li>
+
+            </ul>
+
+            <h3>Referências</h3>
+
+            <p><b>Referências brasileiras</b></p>
+
+            <ul>
+
+                <li>
+                    BRASIL. Ministério da Educação.
+                    <i>Base Nacional Comum Curricular (BNCC)</i>.
+                    Brasília: MEC, 2018.
+                </li>
+
+                <li>
+                    SOCIEDADE BRASILEIRA DE COMPUTAÇÃO (SBC).
+                    <i>Diretrizes para ensino de Computação na Educação Básica</i>.
+                    Porto Alegre: SBC, 2019.
+                </li>
+
+                <li>
+                    CENTRO DE INOVAÇÃO PARA A EDUCAÇÃO BRASILEIRA (CIEB).
+                    <i>Currículo de Referência em Tecnologia e Computação</i>.
+                    São Paulo: CIEB, 2018.
+                </li>
+
+                <li>
+                    FORBELLONE, André Luiz Villar; EBERSPÄCHER, Henri Frederico.
+                    <i>Lógica de programação: a construção de algoritmos e estruturas de dados</i>.
+                    São Paulo: Pearson Prentice Hall.
+                </li>
+
+                <li>
+                    MANZANO, José Augusto N. G.; OLIVEIRA, Jayr Figueiredo de.
+                    <i>Algoritmos: lógica para desenvolvimento de programação de computadores</i>.
+                    São Paulo: Érica.
+                </li>
+
+                <li>
+                    ASCENCIO, Ana Fernanda Gomes; CAMPOS, Edilene Aparecida Veneruchi de.
+                    <i>Fundamentos da programação de computadores: algoritmos, Pascal, C/C++ e Java</i>.
+                    São Paulo: Pearson Prentice Hall.
+                </li>
+
+                <li>
+                    RAABE, André; ZORZO, Avelino F.; BLIKSTEIN, Paulo (orgs.).
+                    <i>Computação na Educação Básica: fundamentos e experiências</i>.
+                    Porto Alegre: Penso, 2020.
+                </li>
+
+            </ul>
+
+            <p><b>Referência internacional</b></p>
+
+            <ul>
+
+                <li>
+                    WING, Jeannette M.
+                    <i>Computational thinking</i>.
+                    Communications of the ACM, v. 49, n. 3, p. 33–35, 2006.
+                </li>
+
+            </ul>
+
+        </article>
+
+
+        <section class="card">
+
+            <h2>
+                <i class="fa-solid fa-circle-question"></i>
+                Atividade 1 — Quiz
+            </h2>
+
+            <div id="quiz"></div>
+
+        </section>
+
+
+        <section class="card">
+
+            <h2>
+                <i class="fa-solid fa-puzzle-piece"></i>
+                Atividade 2 — Praticando decisões
+            </h2>
+
+            <div id="ativ"></div>
+
+        </section>
+
+    </main>
+
+
+    <script>
+
+        var TIT = 'Aula 23 · Algoritmos – Parte 2',
+            ARQ = 'aula-23';
+
+
+        var QUIZ = [
+
+            {
+                "q": "Um algoritmo precisa decidir se um aluno foi aprovado. Qual alternativa representa corretamente uma condição?",
+                "o": [
+                    "mostrar(\"Aprovado\")",
+                    "media >= 6",
+                    "leia(media)",
+                    "media ← 6"
+                ],
+                "a": 1,
+                "e": "A condição é uma pergunta que pode resultar em verdadeiro ou falso. media >= 6 verifica se a média atende ao critério de aprovação."
+            },
+
+            {
+                "q": "Uma escola considera aprovado o aluno com média maior ou igual a 6. Qual condição está correta?",
+                "o": [
+                    "media > 6",
+                    "media < 6",
+                    "media >= 6",
+                    "media = 5"
+                ],
+                "a": 2,
+                "e": "Maior ou igual significa que o valor 6 também deve ser aceito. Por isso usamos >=."
+            },
+
+            {
+                "q": "Um sistema permite a entrada somente se a pessoa tiver 18 anos ou mais E apresentar documento. Qual operador lógico deve ser usado?",
+                "o": [
+                    "OU",
+                    "NÃO",
+                    "E",
+                    "MOD"
+                ],
+                "a": 2,
+                "e": "As duas condições precisam ser verdadeiras ao mesmo tempo: idade >= 18 e documento válido."
+            },
+
+            {
+                "q": "Considere idade = 16. O que será mostrado pelo algoritmo? se idade >= 18 então escreva(\"Permitido\") senão escreva(\"Não permitido\")",
+                "o": [
+                    "Permitido",
+                    "Não permitido",
+                    "16",
+                    "Nada"
+                ],
+                "a": 1,
+                "e": "Como 16 >= 18 é falso, o algoritmo executa o caminho do SENÃO e mostra \"Não permitido\"."
+            },
+
+            {
+                "q": "Um aluno criou uma decisão para nota >= 6, mas testou apenas as notas 8 e 4. Qual teste importante está faltando?",
+                "o": [
+                    "Testar uma nota muito maior que 10.",
+                    "Testar a nota exatamente no limite, como 6, e uma próxima abaixo, como 5,9.",
+                    "Testar somente números negativos.",
+                    "Não é necessário fazer outros testes."
+                ],
+                "a": 1,
+                "e": "Valores de fronteira são importantes. Para nota >= 6, é essencial verificar tanto 6 quanto um valor imediatamente abaixo, como 5,9."
+            }
+
+        ];
+
+
+        var ATIV = {
+
+            "ta": "Parte A — Verdadeiro ou falso?",
+
+            "ia": "Analise cada condição e indique se ela é verdadeira ou falsa considerando os valores fornecidos.",
+
+            "la": [
+                "Verdadeiro",
+                "Falso"
+            ],
+
+            "a": [
+
+                ["idade = 17; condição: idade >= 18", 1],
+
+                ["nota = 7; condição: nota >= 6", 0],
+
+                ["preco = 50; condição: preco > 100", 1],
+
+                ["quantidade = 10; condição: quantidade > 0", 0],
+
+                ["idade = 18; condição: idade >= 18", 0],
+
+                ["media = 5,9; condição: media >= 6", 1],
+
+                ["estoque = 0; condição: estoque > 0", 1],
+
+                ["nota = 10; condição: nota <= 10", 0]
+
+            ],
+
+
+            "tb": "Parte B — Escolha o caminho",
+
+            "ib": "Considere a condição media >= 6. Para cada valor, indique qual caminho será executado.",
+
+            "b": [
+
+                "media = 8 → SE",
+
+                "media = 5 → SENÃO",
+
+                "media = 6 → SE",
+
+                "media = 5,9 → SENÃO"
+
+            ],
+
+
+            "tc": "Parte C — Qual é a saída?",
+
+            "c": {
+
+                "q": "Considere: idade ← 17; se idade >= 18 então escreva(\"A\") senão escreva(\"B\"). O que será mostrado?",
+
+                "o": [
+                    "A",
+                    "B",
+                    "17"
+                ],
+
+                "r": 1
+
+            },
+
+
+            "td": "Parte D — Complete a decisão",
+
+            "d": {
+
+                "q": "Um sistema deve mostrar \"Pode entrar\" somente quando idade >= 18. Qual condição completa corretamente o algoritmo?",
+
+                "o": [
+                    "se idade < 18 então escreva(\"Pode entrar\")",
+                    "se idade >= 18 então escreva(\"Pode entrar\")",
+                    "se idade = 18 então escreva(\"Não pode entrar\")"
+                ],
+
+                "r": 1
+
+            }
+
+        };
+
+    </script>
+
+
+    <script src="app.js"></script>
+
+</body>
+
+</html>

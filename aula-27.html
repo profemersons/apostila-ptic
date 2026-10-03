@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Aula 27 — ComputComp Arcade: O Desafio dos Pilares</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet">
+
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    /* Ajustes específicos do Arcade otimizados para Mobile First */
+    .arcade-box {
+      background: linear-gradient(135deg, #0b1120, #171f38);
+      border: 2px solid var(--ac);
+      border-radius: 1.2rem;
+      padding: 1rem;
+      margin: 1.5rem 0;
+      box-shadow: 0 10px 30px rgba(34, 211, 238, 0.2);
+      text-align: center;
+      width: 100%;
+      box-sizing: border-box;
+      overflow: hidden;
+    }
+    .arcade-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(0,0,0,0.3);
+      padding: 0.6rem 0.8rem;
+      border-radius: 0.8rem;
+      margin-bottom: 1rem;
+      font-weight: 800;
+      font-size: 0.95rem;
+      color: var(--ac);
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+    .question-screen {
+      background: var(--gl);
+      border: 1px solid var(--bd);
+      border-radius: 1rem;
+      padding: 1.2rem;
+      margin-bottom: 1rem;
+      min-height: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.05rem;
+      font-weight: 700;
+      line-height: 1.4;
+      word-break: break-word;
+    }
+    .choices-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.8rem;
+    }
+    @media (min-width: 600px) {
+      .choices-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+      .arcade-box {
+        padding: 1.5rem;
+      }
+    }
+    .choice-btn {
+      background: var(--gl2);
+      border: 1px solid var(--bd);
+      border-radius: 0.8rem;
+      padding: 0.9rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-align: left;
+      color: var(--tx);
+      min-height: 55px;
+      display: flex;
+      align-items: center;
+      width: 100%;
+      box-sizing: border-box;
+      word-break: break-word;
+    }
+    .choice-btn:hover:not(:disabled) {
+      border-color: var(--ac);
+      background: rgba(34, 211, 238, 0.1);
+      transform: translateY(-2px);
+    }
+    .choice-btn.correct {
+      background: rgba(52, 211, 153, 0.25) !important;
+      border-color: var(--ok) !important;
+      color: var(--ok);
+    }
+    .choice-btn.wrong {
+      background: rgba(251, 113, 133, 0.25) !important;
+      border-color: var(--no) !important;
+      color: var(--no);
+    }
+    .game-over-screen {
+      padding: 1.5rem 0.5rem;
+    }
+    .leaderboard-table {
+      width: 100%;
+      margin-top: 1rem;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+    }
+    @media (min-width: 600px) {
+      .leaderboard-table {
+        font-size: 0.9rem;
+      }
+    }
+    .leaderboard-table th, .leaderboard-table td {
+      padding: 0.5rem;
+      text-align: center;
+      border: 1px solid var(--bd);
+      word-break: break-word;
+    }
+    .leaderboard-table th {
+      background: var(--gl2);
+      color: var(--ac);
+    }
+    .position-badge {
+      background: rgba(34, 211, 238, 0.2);
+      color: var(--ac);
+      padding: 0.4rem 0.8rem;
+      border-radius: 1rem;
+      font-weight: bold;
+      display: inline-block;
+      margin-bottom: 1rem;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="bar"></div>
+  
+  <header class="app-header">
+    <div class="hc">
+      <a href="index.html" class="brand">
+        <span class="logo"><i class="fa-solid fa-arrow-left"></i></span>
+        <span class="bt">
+          <span class="tag">Projetos de TIC</span>
+          <span class="cn">Voltar às aulas</span>
+        </span>
+      </a>
+      <span class="acts">
+        <button id="fm">A−</button>
+        <button id="fp">A+</button>
+        <button id="tt" title="Alternar tema"></button>
+      </span>
+    </div>
+  </header>
+
+  <main class="wrap narrow">
+
+    <div class="chips">
+      <span class="chip">Aula 27 • 28/08/2026</span>
+      <span class="chip">1h40</span>
+      <span class="chip">Pensamento Computacional</span>
+      <span class="chip">Arcade Educativo</span>
+    </div>
+
+    <h1>Aula 27 — ComputComp Arcade: O Desafio dos Pilares</h1>
+
+    <p class="lead">
+      Um mini-game de perguntas dinâmicas e aleatórias. Cada partida traz uma combinação diferente de desafios para testar sua agilidade lógica!
+    </p>
+
+    <details id="toc" class="card">
+      <summary>
+        <i class="fa-solid fa-list"></i>
+        Nesta aula
+      </summary>
+      <nav>
+        <a href="#contexto">Objetivo do jogo</a>
+        <a href="#arcade">ComputComp Arcade (Jogue agora)</a>
+        <a href="#ranking">Ranking Global da Turma</a>
+      </nav>
+    </details>
+
+    <section id="contexto">
+        <h2>Como funciona a pontuação e o desafio?</h2>
+        <p>
+          O sistema sorteia perguntas de um banco com múltiplos desafios. As questões aparecem em ordem e com alternativas embaralhadas.
+        </p>
+        <div class="card">
+          <h3><i class="fa-solid fa-bolt"></i> Regras de Pontuação</h3>
+          <ul>
+            <li>Você começa com <strong>3 vidas</strong> ❤️.</li>
+            <li>Cada acerto vale <strong>20 pontos + bônus de tempo</strong> (quanto mais rápido responder, mais pontos ganha).</li>
+            <li>Errar ou deixar o tempo esgotar (15s) remove 1 vida.</li>
+            <li>Ao final de 8 rodadas ou ao esgotar as vidas, salve sua pontuação no ranking!</li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="arcade">
+        <h2>ComputComp Arcade</h2>
+
+        <div class="arcade-box">
+          
+          <div id="startScreen">
+            <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color: var(--ac);">
+              <i class="fa-solid fa-gamepad"></i> Pronto para o Desafio?
+            </h3>
+            <p class="mu" style="margin-bottom: 1.5rem;">
+              O banco de 30 questões garante perguntas inéditas. Mostre que domina a lógica!
+            </p>
+            <button class="pri" id="startGameBtn" style="font-size: 1.05rem; padding: 0.8rem 1.8rem; width: 100%;">
+              <i class="fa-solid fa-play"></i> Iniciar Jogo
+            </button>
+          </div>
+
+          <div id="gamePlayArea" style="display: none;">
+            <div class="arcade-header">
+              <span>VIDAS: <span id="livesDisplay" style="color: var(--no);">❤️❤️❤️</span></span>
+              <span>RODADA: <span id="roundDisplay">1/10</span></span>
+              <span>PONTOS: <span id="scoreDisplay">0</span></span>
+              <span>TEMPO: <span id="timerDisplay" style="color: var(--ac2);">15s</span></span>
+            </div>
+
+            <div class="question-screen" id="questionText">
+              Carregando desafio...
+            </div>
+
+            <div class="choices-grid" id="choicesGrid"></div>
+          </div>
+
+          <div id="gameOverScreen" style="display: none;" class="game-over-screen">
+            <h3 id="endGameTitle" style="font-size: 1.6rem; margin-bottom: 0.5rem; color: var(--no);">Fim de Jogo!</h3>
+            <p id="endGameMessage" class="mu" style="font-size: 1rem; margin-bottom: 1rem;">Você pontuou X pontos.</p>
+            
+            <div id="userPositionContainer" style="display: none;">
+              <span class="position-badge" id="userPositionBadge">Sua posição: #--</span>
+            </div>
+
+            <div style="max-width: 100%; margin: 0 auto;" id="saveScoreForm">
+              <input type="text" id="playerNameInput" placeholder="Digite seu nome ou apelido" autocomplete="off" style="text-align: center; margin-bottom: 0.8rem; width: 100%; box-sizing: border-box;">
+              <button class="pri" id="saveScoreBtn" style="width: 100%;">Salvar no Ranking Global</button>
+            </div>
+
+            <button class="btn" id="restartGameBtn" style="margin-top: 1rem; width: 100%;">
+              <i class="fa-solid fa-rotate-right"></i> Jogar Novamente
+            </button>
+          </div>
+
+        </div>
+      </section>
+
+      <section id="ranking">
+        <h2>Ranking Global da Turma (Top 10)</h2>
+        <p>Atualizado em tempo real com todos os alunos[cite: 29]:</p>
+
+        <div class="card" style="overflow-x: auto;">
+          <table class="leaderboard-table">
+            <thead>
+              <tr>
+                <th>Pos</th>
+                <th>Jogador(a)</th>
+                <th>Pts</th>
+                <th>Data/Hora</th>
+              </tr>
+            </thead>
+            <tbody id="leaderboardBody">
+              <tr><td colspan="4">Conectando ao ranking da turma...[cite: 29]</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+    </article>
+
+  </main>
+
+  <script>
+    var TIT = 'Aula 27 · ComputComp Arcade';
+    var ARQ = 'aula-27';
+    var QUIZ = null;
+    var ATIV = null;
+
+    // COLOQUE AQUI A SUA URL DO GOOGLE APPS SCRIPT (Terminada em /exec)
+    const WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbzjThLyJSJZRIGcGkxXi9BoQh2f-brHd8X0k6aYdpx7gs4D1GeOBrLnw-s34j6S_0n-NA/exec';
+
+    // Banco Master Expandido com 30 Questões
+    const masterQuestionBank = [
+      {
+        q: "Dividir um problema grande de engenharia de software em módulos menores é:",
+        choices: ["Abstração", "Decomposição", "Reconhecimento de padrões", "Algoritmo"],
+        answerKey: "Decomposição"
+      },
+      {
+        q: "Um mapa de metrô que ignora as ruas reais e mostra apenas estações e conexões aplica qual pilar?",
+        choices: ["Abstração", "Decomposição", "Repetição", "Variável global"],
+        answerKey: "Abstração"
+      },
+      {
+        q: "Perceber que a entrada da escola tem sempre a mesma sequência de registro de presença revela:",
+        choices: ["Um algoritmo fixo", "Reconhecimento de padrões", "Abstração pura", "Erro de sistema"],
+        answerKey: "Reconhecimento de padrões"
+      },
+      {
+        q: "Uma sequência finita, ordenada e clara de instruções para resolver um problema chama-se:",
+        choices: ["Variável", "Algoritmo", "Constante", "Loop infinito"],
+        answerKey: "Algoritmo"
+      },
+      {
+        q: "Em um sistema de biblioteca, ignorar a cor da capa do livro e focar apenas no código e disponibilidade é um exemplo de:",
+        choices: ["Decomposição", "Abstração", "Seleção aleatória", "Fluxograma complexo"],
+        answerKey: "Abstração"
+      },
+      {
+        q: "Qual estrutura de repetição é ideal quando sabemos exatamente quantas vezes o bloco vai repetir?",
+        choices: ["ENQUANTO", "REPITA...ATÉ", "PARA (FOR)", "SE...SENÃO"],
+        answerKey: "PARA (FOR)"
+      },
+      {
+        q: "O que acontece se esquecermos de atualizar a variável de controle em um laço ENQUANTO?",
+        choices: ["O programa roda mais rápido", "Ocorre um loop infinito", "O computador desliga", "Nada muda"],
+        answerKey: "Ocorre um loop infinito"
+      },
+      {
+        q: "Qual operador relacional representa 'maior ou igual a' em pseudocódigo?",
+        choices: ["<>", ">=", "=>", "=="],
+        answerKey: ">="
+      },
+      {
+        q: "Para organizar uma festa de 100 pessoas separando convidados, local e comida, usamos:",
+        choices: ["Decomposição", "Abstração", "Variáveis", "Comentários"],
+        answerKey: "Decomposição"
+      },
+      {
+        q: "Qual estrutura é recomendada para pedir uma senha ao usuário garantindo que ela seja testada pelo menos uma vez?",
+        choices: ["ENQUANTO", "REPITA...ATÉ", "PARA", "SE simples"],
+        answerKey: "REPITA...ATÉ"
+      },
+      {
+        q: "O que faz um acumulador em um algoritmo de repetição?",
+        choices: ["Conta quantas vezes o loop rodou", "Guarda uma soma progressiva de valores", "Encerra o programa", "Apaga dados antigos"],
+        answerKey: "Guarda uma soma progressiva de valores"
+      },
+      {
+        q: "Qual comando é utilizado tipicamente para receber dados digitados pelo usuário?",
+        choices: ["escreva()", "leia()", "mostre()", "imprima()"],
+        answerKey: "leia()"
+      },
+      {
+        q: "O que significa o operador lógico 'E' (AND) em uma condição?",
+        choices: ["Apenas uma condição precisa ser verdadeira", "Todas as condições precisam ser verdadeiras", "Nenhuma condição pode ser verdadeira", "Inverte o valor lógico"],
+        answerKey: "Todas as condições precisam ser verdadeiras"
+      },
+      {
+        q: "O teste de mesa serve principalmente para:",
+        choices: ["Testar a velocidade do processador", "Simular a execução do algoritmo no papel para achar erros", "Desenhar fluxogramas coloridos", "Criar interfaces gráficas"],
+        answerKey: "Simular a execução do algoritmo no papel para achar erros"
+      },
+      {
+        q: "Qual símbolo representa uma estrutura de decisão (condicional) em um fluxograma?",
+        choices: ["Retângulo", "Círculo", "Losango", "Paralelogramo"],
+        answerKey: "Losango"
+      },
+      {
+        q: "O que caracteriza um loop infinito?",
+        choices: ["Uma repetição que nunca atinge a condição de parada", "Um código muito longo", "Um erro de digitação na variável", "Uma divisão por zero"],
+        answerKey: "Uma repetição que nunca atinge a condição de parada"
+      },
+      {
+        q: "O que é uma variável em programação?",
+        choices: ["Um espaço nomeado na memória para guardar dados que podem mudar", "Um número fixo que nunca se altera", "Uma mensagem de erro do sistema", "Um tipo de conector de rede"],
+        answerKey: "Um espaço nomeado na memória para guardar dados que podem mudar"
+      },
+      {
+        q: "Qual tipo de dado é mais adequado para guardar o nome de um aluno?",
+        choices: ["Inteiro", "Real", "Texto (Caractere)", "Lógico"],
+        answerKey: "Texto (Caractere)"
+      },
+      {
+        q: "Qual operador aritmético representa o resto da divisão inteira em pseudocódigo?",
+        choices: ["div", "mod", "/", "*"],
+        answerKey: "mod"
+      },
+      {
+        q: "Em uma estrutura SE...SENÃO, o bloco do SENÃO é executado quando:",
+        choices: ["A condição do SE for verdadeira", "A condição do SE for falsa", "Sempre", "Nunca"],
+        answerKey: "A condição do SE for falsa"
+      },
+      {
+        q: "O que significa o operador lógico 'OU' (OR)?",
+        choices: ["Basta que pelo menos uma condição seja verdadeira", "Todas precisam ser verdadeiras", "Nenhuma pode ser verdadeira", "Inverte o resultado"],
+        answerKey: "Basta que pelo menos uma condição seja verdadeira"
+      },
+      {
+        q: "Qual o objetivo do pilar de Reconhecimento de Padrões?",
+        choices: ["Dividir tarefas", "Encontrar semelhanças e repetições para reaproveitar soluções", "Apagar dados desnecessários", "Escrever códigos em C++"],
+        answerKey: "Encontrar semelhanças e repetições para reaproveitar soluções"
+      },
+      {
+        q: "Por que o número de telefone de uma pessoa deve ser guardado como texto e não como número inteiro?",
+        choices: ["Para ocupar mais espaço", "Porque não faremos operações matemáticas com ele e preserva zeros à esquerda", "Porque números inteiros não aceitam dígitos", "Por exigência do hardware"],
+        answerKey: "Porque não faremos operações matemáticas com ele e preserva zeros à esquerda"
+      },
+      {
+        q: "O que é um fluxograma?",
+        choices: ["Uma representação gráfica em blocos e setas de um processo ou algoritmo", "Uma planilha financeira", "Um antivírus", "Uma linguagem de estilização"],
+        answerKey: "Uma representação gráfica em blocos e setas de um processo ou algoritmo"
+      },
+      {
+        q: "O que representa o símbolo de terminal (oval/arredondado) em um fluxograma?",
+        choices: ["Uma operação matemática", "O início ou o fim do fluxo", "Uma entrada de dados", "Uma decisão lógica"],
+        answerKey: "O início ou o fim do fluxo"
+      },
+      {
+        q: "Qual a função de um contador em um loop?",
+        choices: ["Somar valores monetários", "Registrar o número exato de vezes que um evento aconteceu", "Medir a temperatura do PC", "Exibir mensagens na tela"],
+        answerKey: "Registrar o número exato de vezes que um evento aconteceu"
+      },
+      {
+        q: "Qual alternativa define corretamente uma constante?",
+        choices: ["Um valor que muda o tempo todo", "Um valor fixo que não se altera durante a execução do programa", "Um erro de sintaxe", "Uma variável sem nome"],
+        answerKey: "Um valor fixo que não se altera durante a execução do programa"
+      },
+      {
+        q: "O que é uma 'variável auxiliar' ao trocarmos valores entre duas variáveis?",
+        choices: ["Uma variável temporária usada para não perder dados durante a troca", "Um erro de programação", "Uma constante global", "Um backup na nuvem"],
+        answerKey: "Uma variável temporária usada para não perder dados durante a troca"
+      },
+      {
+        q: "O que significa dizer que um algoritmo deve ser 'finito'?",
+        choices: ["Ele deve custar caro", "Ele precisa terminar após um número limitado de passos", "Ele deve rodar eternamente", "Ele não pode usar variáveis"],
+        answerKey: "Ele precisa terminar após um número limitado de passos"
+      },
+      {
+        q: "Qual das opções abaixo representa um operador relacional de desigualdade (diferente de)?",
+        choices: ["=", "<>", ">=", "<="],
+        answerKey: "<>"
+      }
+    ];
+
+    let currentQuestions = [];
+    let qIndex = 0;
+    let score = 0;
+    let lives = 3;
+    let timer = 15;
+    let timerInterval = null;
+    const maxQuestionsPerGame = 10;
+
+    const startScreen = document.getElementById('startScreen');
+    const gamePlayArea = document.getElementById('gamePlayArea');
+    const gameOverScreen = document.getElementById('gameOverScreen');
+    const startGameBtn = document.getElementById('startGameBtn');
+    const restartGameBtn = document.getElementById('restartGameBtn');
+    const questionText = document.getElementById('questionText');
+    const choicesGrid = document.getElementById('choicesGrid');
+    const livesDisplay = document.getElementById('livesDisplay');
+    const roundDisplay = document.getElementById('roundDisplay');
+    const scoreDisplay = document.getElementById('scoreDisplay');
+    const timerDisplay = document.getElementById('timerDisplay');
+    const saveScoreBtn = document.getElementById('saveScoreBtn');
+    const playerNameInput = document.getElementById('playerNameInput');
+    const userPositionContainer = document.getElementById('userPositionContainer');
+    const userPositionBadge = document.getElementById('userPositionBadge');
+    const saveScoreForm = document.getElementById('saveScoreForm');
+
+    function getShuffledGameQuestions() {
+      let shuffledMaster = [...masterQuestionBank].sort(() => Math.random() - 0.5);
+      let selected = shuffledMaster.slice(0, maxQuestionsPerGame);
+
+      return selected.map(item => {
+        let choicesWithKeys = item.choices.map(c => ({ text: c, isCorrect: c === item.answerKey }));
+        let shuffledChoices = choicesWithKeys.sort(() => Math.random() - 0.5);
+        return {
+          q: item.q,
+          choices: shuffledChoices
+        };
+      });
+    }
+
+    function startGame() {
+      currentQuestions = getShuffledGameQuestions();
+      qIndex = 0;
+      score = 0;
+      lives = 3;
+      startScreen.style.display = 'none';
+      gameOverScreen.style.display = 'none';
+      gamePlayArea.style.display = 'block';
+      saveScoreForm.style.display = 'block';
+      userPositionContainer.style.display = 'none';
+      saveScoreBtn.disabled = false;
+      saveScoreBtn.textContent = "Salvar no Ranking Global";
+      updateHUD();
+      loadQuestion();
+    }
+
+    function updateHUD() {
+      livesDisplay.textContent = '❤️'.repeat(lives) + '🖤'.repeat(3 - lives);
+      scoreDisplay.textContent = score;
+      roundDisplay.textContent = `${qIndex + 1}/${currentQuestions.length}`;
+    }
+
+    function loadQuestion() {
+      clearInterval(timerInterval);
+      if (qIndex >= currentQuestions.length || lives <= 0) {
+        endGame();
+        return;
+      }
+
+      updateHUD();
+      timer = 15;
+      timerDisplay.textContent = timer + 's';
+      
+      timerInterval = setInterval(() => {
+        timer--;
+        timerDisplay.textContent = timer + 's';
+        if (timer <= 0) {
+          clearInterval(timerInterval);
+          handleTimeOut();
+        }
+      }, 1000);
+
+      let currentQ = currentQuestions[qIndex];
+      questionText.textContent = currentQ.q;
+
+      choicesGrid.innerHTML = '';
+      currentQ.choices.forEach((choiceObj, idx) => {
+        let btn = document.createElement('button');
+        btn.className = 'choice-btn';
+        btn.innerHTML = `<span><strong>${['A', 'B', 'C', 'D'][idx]})</strong> ${choiceObj.text}</span>`;
+        btn.onclick = () => checkAnswer(choiceObj.isCorrect, btn);
+        choicesGrid.appendChild(btn);
+      });
+    }
+
+    function handleTimeOut() {
+      lives--;
+      updateHUD();
+      highlightCorrectAnswer();
+      setTimeout(() => {
+        qIndex++;
+        loadQuestion();
+      }, 1400);
+    }
+
+    function checkAnswer(isCorrect, btnElement) {
+      clearInterval(timerInterval);
+      
+      let allBtns = choicesGrid.querySelectorAll('button');
+      allBtns.forEach(b => b.disabled = true);
+
+      if (isCorrect) {
+        btnElement.classList.add('correct');
+        score += 20 + (timer * 2); 
+        scoreDisplay.textContent = score;
+      } else {
+        btnElement.classList.add('wrong');
+        lives--;
+        updateHUD();
+        allBtns.forEach((b, idx) => {
+          if (currentQuestions[qIndex].choices[idx].isCorrect) {
+            b.classList.add('correct');
+          }
+        });
+      }
+
+      setTimeout(() => {
+        qIndex++;
+        loadQuestion();
+      }, 1500);
+    }
+
+    function highlightCorrectAnswer() {
+      let allBtns = choicesGrid.querySelectorAll('button');
+      allBtns.forEach(b => b.disabled = true);
+      allBtns.forEach((b, idx) => {
+        if (currentQuestions[qIndex].choices[idx].isCorrect) {
+          b.classList.add('correct');
+        } else {
+          b.classList.add('wrong');
+        }
+      });
+    }
+
+    function endGame() {
+      clearInterval(timerInterval);
+      gamePlayArea.style.display = 'none';
+      gameOverScreen.style.display = 'block';
+
+      let title = document.getElementById('endGameTitle');
+      let msg = document.getElementById('endGameMessage');
+
+      if (lives <= 0) {
+        title.textContent = "Game Over — Sem Vidas!";
+        title.style.color = "var(--no)";
+        msg.textContent = `Suas vidas acabaram, mas você fez ${score} pontos.`;
+      } else {
+        title.textContent = "🏆 Desafio Concluído!";
+        title.style.color = "var(--ok)";
+        msg.textContent = `Parabéns! Você completou o desafio com ${score} pontos!`;
+      }
+    }
+
+    saveScoreBtn.onclick = () => {
+      let name = playerNameInput.value.trim();
+      if (!name) {
+        alert("Por favor, digite seu nome ou apelido.");
+        return;
+      }
+
+      saveScoreBtn.disabled = true;
+      saveScoreBtn.textContent = "Enviando...";
+
+      fetch(WEB_APP_URL, {
+        method: 'POST',
+        body: JSON.stringify({ nome: name, pontuacao: score })
+      })
+      .then(response => response.json())
+      .then(data => {
+        saveScoreForm.style.display = 'none';
+        fetchLeaderboardAndShowPosition(score);
+      })
+      .catch(error => {
+        console.error('Erro ao salvar:', error);
+        alert('Erro ao conectar com o ranking global. Tente novamente.');
+        saveScoreBtn.disabled = false;
+        saveScoreBtn.textContent = "Salvar no Ranking Global";
+      });
+      
+      playerNameInput.value = "";
+    };
+
+    function fetchLeaderboardAndShowPosition(userScore) {
+      fetch(WEB_APP_URL)
+      .then(response => response.json())
+      .then(data => {
+        renderLeaderboardTable(data);
+        
+        let userPos = data.findIndex(item => item.pontuacao === userScore) + 1;
+        if (userPos > 0) {
+          userPositionBadge.textContent = `Sua posição final: #${userPos} de ${data.length} jogadores`;
+          userPositionContainer.style.display = 'block';
+        }
+      })
+      .catch(error => {
+        console.error('Erro ao buscar ranking:', error);
+      });
+    }
+
+    function renderLeaderboard() {
+      if (WEB_APP_URL.includes('SUA_URL')) {
+        document.getElementById('leaderboardBody').innerHTML = `<tr><td colspan="4" style="color: var(--no);">Configure a URL do Apps Script no código para ativar o ranking.</td></tr>`;
+        return;
+      }
+      
+      fetch(WEB_APP_URL)
+      .then(response => response.json())
+      .then(data => {
+        renderLeaderboardTable(data);
+      })
+      .catch(error => {
+        document.getElementById('leaderboardBody').innerHTML = `<tr><td colspan="4">Erro ao carregar o ranking global.</td></tr>`;
+      });
+    }
+
+    function renderLeaderboardTable(data) {
+      let tbody = document.getElementById('leaderboardBody');
+      if (!data || data.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="4">Nenhuma pontuação registrada ainda. Seja o primeiro!</td></tr>`;
+        return;
+      }
+      let top10 = data.slice(0, 10);
+      tbody.innerHTML = top10.map((item, idx) => `
+        <tr>
+          <td><strong>#${idx + 1}</strong></td>
+          <td>${item.nome}</td>
+          <td><strong>${item.pontuacao} pts</strong></td>
+          <td style="font-size: 0.75rem; color: var(--mu);">${item.data}</td>
+        </tr>
+      `).join('');
+    }
+
+    startGameBtn.onclick = startGame;
+    restartGameBtn.onclick = () => {
+      startGame();
+    };
+
+    renderLeaderboard();
+  </script>
+
+  <script src="app.js"></script>
+
+</body>
+
+</html>
