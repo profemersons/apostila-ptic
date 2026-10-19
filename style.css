@@ -66,3 +66,14 @@ input{width:100%;margin:.5rem 0}
 .sy{display:inline-block;width:2.4rem;height:1.2rem;border:2px solid var(--ac);vertical-align:middle}
 .sy.t{border-radius:1rem}.sy.d{width:1.4rem;height:1.4rem;transform:rotate(45deg) scale(.85)}.sy.io{transform:skewX(-20deg)}
 .fb .fa{align-self:center;flex:none}
+
+.md pre{overflow-x:auto;margin:1rem 0;padding:.8rem 1rem;background:var(--gl2);border:1px solid var(--bd);border-radius:.8rem;font:.82rem/1.55 ui-monospace,Menlo,Consolas,monospace}
+.md pre code{background:none;padding:0;white-space:pre}
+
+textarea{display:block;width:100%;margin:.2rem 0 .7rem;font:inherit;color:var(--tx);background:var(--gl2);border:1px solid var(--bd);border-radius:.8rem;padding:.5rem .9rem;resize:vertical}
+.nest{border:1px solid var(--bd);border-radius:1rem;padding:.6rem .8rem;margin:.4rem 0;background:var(--gl)}
+.nest.g{border-color:var(--ac);background:rgba(34,211,238,.14)}
+
+.col{flex:1;display:flex;flex-direction:column;align-items:center;gap:.25rem}
+.opts{display:flex;flex-wrap:wrap;gap:.35rem;margin:.2rem 0 .8rem}
+label.mu{display:block;margin-top:.4rem}

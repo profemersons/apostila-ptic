@@ -49,12 +49,28 @@ $('#qg').onclick=function(){var n=$('#qn').value.trim();if(!n){alert('Digite seu
 var L=[];R.forEach(function(e,k){L.push(['Pergunta '+(k+1)+' — '+(e.ok?'Certo':'Errado'),e.ok?OK:NO,1]);L.push([e.q.q.slice(0,90)+'…',MU]);L.push(['Sua resposta: '+e.t,TX]);if(!e.ok)L.push(['Correta: '+e.q.o[e.q.a],OK])});
 img('Quiz · '+TIT,n,L,'Acertos: '+pt+' / '+Q.length,$('#qo'),'quiz-'+ARQ)}}
 show()}
-function ativ(){var el=$('#ativ'),A=ATIV,ans={},pc={},ord=sh(A.b.map(function(_,i){return i}));
+function lab(){var el=$('#ativ'),A=ATIV,S={},h='<p class=mu>'+A.lab.i+'</p>';
+A.lab.s.forEach(function(s,si){h+='<h3>'+s.t+'</h3><p class=mu>'+s.i+'</p>';
+s.f.forEach(function(f,fi){var id='L'+si+'_'+fi;h+='<label class=mu>'+f.l+'</label>';
+if(f.o)h+='<div class=opts>'+f.o.map(function(o,k){return '<button data-l='+id+' data-v='+k+'>'+o+'</button>'}).join('')+'</div>';
+else h+='<textarea data-t='+id+' rows=2></textarea>'})});
+h+='<h3>Gerar imagem</h3><input id=nm placeholder="Seu nome" autocomplete=name><button class=pri id=gi>Gerar imagem</button><div id=out></div>';
+el.innerHTML=h;
+el.onclick=function(e){var b=e.target.closest('button');if(!b)return;var g=b.dataset;
+if(g.l){S[g.l]=+g.v;el.querySelectorAll('[data-l="'+g.l+'"]').forEach(function(x){x.classList.toggle('sel',x===b)})}
+else if(b.id=='gi'){var nm=$('#nm').value.trim();if(!nm){alert('Digite seu nome antes de gerar a imagem.');return}
+var L=[],ok=0,tot=0;
+A.lab.s.forEach(function(s,si){L.push([s.t,AC,1]);s.f.forEach(function(f,fi){var id='L'+si+'_'+fi,v;tot++;
+if(f.o)v=S[id]===undefined?'':f.o[S[id]];else v=(el.querySelector('[data-t="'+id+'"]').value||'').trim();
+if(v)ok++;L.push([f.l+': '+(v||'(em branco)'),v?TX:MU])})});
+img('Laboratório · '+TIT,nm,L,'Campos preenchidos: '+ok+' / '+tot,$('#out'),'laboratorio-'+ARQ)}}}
+function ativ(){if(ATIV.lab)return lab();var el=$('#ativ'),A=ATIV,ans={},pc={},ord=sh(A.b.map(function(_,i){return i}));
 function ch(id,tt,p){return '<h3>'+tt+'</h3><p>'+p.q+'</p>'+p.o.map(function(o,i){return '<button class=opt data-c='+id+' data-v='+i+'>'+o+'</button>'}).join('')}
 var h='<h3>'+A.ta+'</h3><p class=mu>'+A.ia+'</p>';
 A.a.forEach(function(it,k){h+='<div class=row><span>'+it[0]+'</span><span>'+A.la.map(function(l,j){return '<button data-a='+k+' data-v='+j+'>'+l+'</button>'}).join(' ')+'</span></div>'});
 h+='<h3>'+A.tb+'</h3><p class=mu>'+A.ib+'</p><div id=ob></div>';
 h+=ch('c',A.tc,A.c)+ch('d',A.td,A.d);
+if(A.e){h+='<h3>'+A.e.t+'</h3><p class=mu>'+A.e.i+'</p>'+A.e.f.map(function(f,k){return '<label class=mu>'+f+'</label><textarea data-e='+k+' rows=2></textarea>'}).join('')}
 h+='<h3>Gerar imagem</h3><input id=nm placeholder="Seu nome" autocomplete=name><button class=pri id=gi>Gerar imagem</button><div id=out></div>';
 el.innerHTML=h;
 function rb(){$('#ob').innerHTML=ord.map(function(k,p){return '<div class=row><span>'+A.b[k]+'</span><span><button data-m='+p+' data-d=-1>↑</button> <button data-m='+p+' data-d=1>↓</button></span></div>'}).join('')}rb();
@@ -71,5 +87,6 @@ A.a.forEach(function(it,k){var v=ans[k];L.push([it[0]+': '+(v===undefined?'sem r
 L.push([A.tb+' ('+pb+'/2)',AC,1]);
 ord.forEach(function(k,p){L.push([(p+1)+'. '+A.b[k],k==p?OK:NO])});
 [['c',A.tc+' ('+pcc+'/2)',A.c],['d',A.td+' ('+pd+'/1)',A.d]].forEach(function(z){var q=z[2],v=pc[z[0]];L.push([z[1],AC,1]);L.push(['Sua resposta: '+(v===undefined?'sem resposta':q.o[v]),v===q.r?OK:NO]);if(v!==q.r)L.push(['Correta: '+q.o[q.r],OK])});
+if(A.e){L.push([A.e.t+' (sem pontuação)',AC,1]);A.e.f.forEach(function(f,k){var v=(el.querySelector('[data-e="'+k+'"]').value||'').trim();L.push([f+': '+(v||'(em branco)'),TX])})}
 img('Atividade · '+TIT,nm,L,'Total: '+tot+' / '+(n+5),$('#out'),'atividade-'+ARQ)}}
 })();
