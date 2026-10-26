@@ -77,3 +77,7 @@ textarea{display:block;width:100%;margin:.2rem 0 .7rem;font:inherit;color:var(--
 .col{flex:1;display:flex;flex-direction:column;align-items:center;gap:.25rem}
 .opts{display:flex;flex-wrap:wrap;gap:.35rem;margin:.2rem 0 .8rem}
 label.mu{display:block;margin-top:.4rem}
+
+.brand,.bt{min-width:0}.cn{white-space:nowrap}
+.acts button{padding:.5rem .65rem;min-width:44px}
+@media(max-width:430px){.hc{padding:.5rem .7rem}.acts{gap:.3rem}#tt{padding:.5rem .65rem}.bt .tag{display:none}}
