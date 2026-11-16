@@ -84,3 +84,4 @@ label.mu{display:block;margin-top:.4rem}
 
 .pv{display:none;max-width:100%;max-height:9rem;border-radius:.8rem;margin:.3rem 0 .8rem;border:1px solid var(--bd)}
 input[type=file]{padding:.55rem .7rem;font-size:.85rem}
+.opts button{max-width:100%;white-space:normal;text-align:left;overflow-wrap:anywhere}
