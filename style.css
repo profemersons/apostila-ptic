@@ -85,3 +85,35 @@ label.mu{display:block;margin-top:.4rem}
 .pv{display:none;max-width:100%;max-height:9rem;border-radius:.8rem;margin:.3rem 0 .8rem;border:1px solid var(--bd)}
 input[type=file]{padding:.55rem .7rem;font-size:.85rem}
 .opts button{max-width:100%;white-space:normal;text-align:left;overflow-wrap:anywhere}
+
+.chat{margin:1rem 0 .4rem;border:1px solid var(--bd);border-radius:1rem;overflow:hidden;background:var(--gl)}
+.chat .cb{padding:.7rem .9rem;font-size:.88rem;line-height:1.55}
+.chat .cu{background:rgba(139,92,246,.16);border-bottom:1px solid var(--bd)}
+.chat .ct{display:block;font-size:.68rem;font-weight:800;letter-spacing:.07em;text-transform:uppercase;color:var(--ac);margin-bottom:.25rem}
+.chat .cu .ct{color:var(--ac2)}
+.chat .pp{white-space:pre-wrap;font:.8rem/1.55 ui-monospace,Menlo,Consolas,monospace;overflow-wrap:anywhere}
+.chat ul,.chat ol{margin:.3rem 0;padding-left:1.2rem}
+.chat pre{margin:.4rem 0 0;font-size:.76rem}
+.chk{border-left:4px solid var(--ok);background:rgba(52,211,153,.1);border-radius:.6rem;padding:.5rem .9rem;margin:.5rem 0;font-size:.88rem}
+.chk ul{margin:.3rem 0;padding-left:1.1rem}
+.dec2{border-left:4px solid var(--ac2);background:var(--gl2);border-radius:.6rem;padding:.5rem .9rem;margin:.5rem 0 1.2rem;font-size:.88rem}
+.sld{margin:1.1rem 0;border:1px solid var(--bd);border-radius:1rem;overflow:hidden;background:var(--bg2);box-shadow:var(--sh)}
+.sld .sh{display:flex;justify-content:space-between;gap:.5rem;padding:.4rem .8rem;background:var(--gl2);font-size:.68rem;font-weight:800;letter-spacing:.05em;color:var(--mu)}
+.sld .sb{padding:.9rem 1rem;min-height:8rem}
+.sld .sb h4{margin:0 0 .45rem;font-size:1.08rem;line-height:1.3}
+.sld .sb ul{margin:.3rem 0;padding-left:1.1rem}.sld .sb li{margin:.15rem 0;font-size:.9rem}
+.sld .sb p{margin:.3rem 0;font-size:.9rem}
+.sld .sn{padding:.5rem .8rem;border-top:1px dashed var(--bd);font-size:.8rem;color:var(--mu)}
+.sld.ruim{border-color:var(--no)}.sld.bom{border-color:var(--ok)}
+.sld .big{font-size:2.2rem;font-weight:800;line-height:1.1;color:var(--ac)}
+.sld .tiny{font-size:.62rem;line-height:1.35;color:var(--mu)}
+.sld .fn{max-width:none;padding:.4rem .6rem;font-size:.85rem}
+.sld .fl{margin:.3rem 0}
+.pl{display:inline-block;padding:.12rem .6rem;border-radius:2rem;border:1px solid var(--bd);background:var(--gl2);font-size:.75rem;margin:.1rem}
+.pl.g{color:var(--ok);border-color:var(--ok)}.pl.r{color:var(--no);border-color:var(--no)}.pl.a{color:var(--ac);border-color:var(--ac)}
+.poster{border:2px solid var(--ac);border-radius:1rem;padding:.9rem;text-align:center;background:linear-gradient(160deg,rgba(139,92,246,.22),rgba(34,211,238,.16));margin:.4rem 0}
+.poster i{font-size:1.9rem;color:var(--ac)}.poster h4{margin:.3rem 0 .1rem;font-size:1.1rem}
+.cols2{display:grid;grid-template-columns:1fr 1fr;gap:.6rem}
+@media(max-width:430px){.cols2{grid-template-columns:1fr}}
+.cols2>div{border:1px solid var(--bd);border-radius:.8rem;padding:.5rem .7rem;background:var(--gl)}
+.cols2 h5{margin:0 0 .2rem;font-size:.8rem;color:var(--ac)}
